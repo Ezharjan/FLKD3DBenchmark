@@ -1,0 +1,137 @@
+[Wed Jun 24 16:31:12 EDT 2026] task 36 on GPU 0: python flkd/advanced_fl_train_classification.py --model pointnet2_cls_ssg --fl_strategy ditto --dataset craniosynostosis --seed 123 --batch_size 24 --num_clients 5 --local_epochs 5 --communication_rounds 20 --num_point 1024 --partition label_skew --dirichlet_alpha 0.5 --log_dir fl_pointnet2_cls_ssg_ditto_s123 --ditto_lambda 0.1 --data_root data --output_root outputs --num_workers -1 --max_runtime_hours 166.0
+2026-06-24 16:31:13,118 - INFO - PARAMETER ...
+2026-06-24 16:31:13,118 - INFO - {'use_cpu': False, 'no_amp': False, 'gpu': '0', 'num_workers': -1, 'batch_size': 24, 'model': 'pointnet2_cls_ssg', 'num_category': None, 'dataset': 'craniosynostosis', 'data_root': 'data', 'output_root': 'outputs', 'train_split': 0.8, 'dataset_seed': 0, 'cache_dataset': True, 'min_class_samples': 1, 'epoch': 200, 'learning_rate': 0.001, 'num_point': 1024, 'optimizer': 'Adam', 'log_dir': 'fl_pointnet2_cls_ssg_ditto_s123', 'decay_rate': 0.0001, 'use_normals': False, 'process_data': False, 'use_uniform_sample': False, 'resume': True, 'fl_strategy': 'ditto', 'num_clients': 5, 'local_epochs': 5, 'communication_rounds': 20, 'iid': False, 'partition': 'label_skew', 'dirichlet_alpha': 0.5, 'seed': 123, 'mu': 0.01, 'alpha': 0.01, 'server_lr': 1.0, 'adaptive_server_lr': 0.05, 'server_momentum': 0.9, 'server_beta1': 0.9, 'server_beta2': 0.999, 'server_eps': 0.001, 'moon_temperature': 0.5, 'moon_mu': 1.0, 'ditto_lambda': 0.1, 'max_runtime_hours': 166.0}
+2026-06-24 16:31:13,120 - INFO - Using device: cuda; AMP(bf16)=False; strategy=ditto
+Using device: cuda; AMP(bf16)=False; strategy=ditto
+2026-06-24 16:31:13,121 - INFO - Load dataset ...
+Load dataset ...
+2026-06-24 16:35:03,827 - INFO - Splitting 320 samples across 5 clients (iid=False, partition=label_skew, alpha=0.5)
+Splitting 320 samples across 5 clients (iid=False, partition=label_skew, alpha=0.5)
+2026-06-24 16:35:03,908 - INFO - Model payload: 5.62 MB; comm/round ~56.19 MB.
+Model payload: 5.62 MB; comm/round ~56.19 MB.
+2026-06-24 16:35:03,908 - INFO - Start federated training...
+Start federated training...
+2026-06-24 16:35:03,908 - INFO - Communication round 1/20
+Communication round 1/20
+2026-06-24 16:35:35,216 - INFO - Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 31.3s
+Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 31.3s
+2026-06-24 16:35:35,239 - INFO - Best Instance 0.2500 / Class 0.2500 (round 1)
+Best Instance 0.2500 / Class 0.2500 (round 1)
+2026-06-24 16:35:35,601 - INFO - Communication round 2/20
+Communication round 2/20
+2026-06-24 16:36:00,972 - INFO - Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 25.4s
+Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 25.4s
+2026-06-24 16:36:00,973 - INFO - Best Instance 0.2500 / Class 0.2500 (round 1)
+Best Instance 0.2500 / Class 0.2500 (round 1)
+2026-06-24 16:36:01,345 - INFO - Communication round 3/20
+Communication round 3/20
+2026-06-24 16:36:26,613 - INFO - Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 25.3s
+Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 25.3s
+2026-06-24 16:36:26,613 - INFO - Best Instance 0.2500 / Class 0.2500 (round 1)
+Best Instance 0.2500 / Class 0.2500 (round 1)
+2026-06-24 16:36:26,946 - INFO - Communication round 4/20
+Communication round 4/20
+2026-06-24 16:36:51,950 - INFO - Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 25.0s
+Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 25.0s
+2026-06-24 16:36:51,950 - INFO - Best Instance 0.2500 / Class 0.2500 (round 1)
+Best Instance 0.2500 / Class 0.2500 (round 1)
+2026-06-24 16:36:52,287 - INFO - Communication round 5/20
+Communication round 5/20
+2026-06-24 16:37:17,410 - INFO - Test Instance Acc: 0.2750, Class Acc: 0.2750, Round time: 25.1s
+Test Instance Acc: 0.2750, Class Acc: 0.2750, Round time: 25.1s
+2026-06-24 16:37:17,424 - INFO - Best Instance 0.2750 / Class 0.2750 (round 5)
+Best Instance 0.2750 / Class 0.2750 (round 5)
+2026-06-24 16:37:17,810 - INFO - Communication round 6/20
+Communication round 6/20
+2026-06-24 16:37:43,411 - INFO - Test Instance Acc: 0.3625, Class Acc: 0.3625, Round time: 25.6s
+Test Instance Acc: 0.3625, Class Acc: 0.3625, Round time: 25.6s
+2026-06-24 16:37:43,425 - INFO - Best Instance 0.3625 / Class 0.3625 (round 6)
+Best Instance 0.3625 / Class 0.3625 (round 6)
+2026-06-24 16:37:43,754 - INFO - Communication round 7/20
+Communication round 7/20
+2026-06-24 16:38:09,862 - INFO - Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 26.1s
+Test Instance Acc: 0.2500, Class Acc: 0.2500, Round time: 26.1s
+2026-06-24 16:38:09,862 - INFO - Best Instance 0.3625 / Class 0.3625 (round 6)
+Best Instance 0.3625 / Class 0.3625 (round 6)
+2026-06-24 16:38:10,205 - INFO - Communication round 8/20
+Communication round 8/20
+2026-06-24 16:38:35,530 - INFO - Test Instance Acc: 0.5000, Class Acc: 0.5000, Round time: 25.3s
+Test Instance Acc: 0.5000, Class Acc: 0.5000, Round time: 25.3s
+2026-06-24 16:38:35,545 - INFO - Best Instance 0.5000 / Class 0.5000 (round 8)
+Best Instance 0.5000 / Class 0.5000 (round 8)
+2026-06-24 16:38:35,914 - INFO - Communication round 9/20
+Communication round 9/20
+2026-06-24 16:39:01,666 - INFO - Test Instance Acc: 0.5125, Class Acc: 0.5125, Round time: 25.8s
+Test Instance Acc: 0.5125, Class Acc: 0.5125, Round time: 25.8s
+2026-06-24 16:39:01,679 - INFO - Best Instance 0.5125 / Class 0.5125 (round 9)
+Best Instance 0.5125 / Class 0.5125 (round 9)
+2026-06-24 16:39:02,009 - INFO - Communication round 10/20
+Communication round 10/20
+2026-06-24 16:39:26,994 - INFO - Test Instance Acc: 0.4750, Class Acc: 0.4750, Round time: 25.0s
+Test Instance Acc: 0.4750, Class Acc: 0.4750, Round time: 25.0s
+2026-06-24 16:39:26,996 - INFO - Best Instance 0.5125 / Class 0.5125 (round 9)
+Best Instance 0.5125 / Class 0.5125 (round 9)
+2026-06-24 16:39:27,361 - INFO - Communication round 11/20
+Communication round 11/20
+2026-06-24 16:39:52,429 - INFO - Test Instance Acc: 0.5375, Class Acc: 0.5375, Round time: 25.1s
+Test Instance Acc: 0.5375, Class Acc: 0.5375, Round time: 25.1s
+2026-06-24 16:39:52,443 - INFO - Best Instance 0.5375 / Class 0.5375 (round 11)
+Best Instance 0.5375 / Class 0.5375 (round 11)
+2026-06-24 16:39:52,774 - INFO - Communication round 12/20
+Communication round 12/20
+2026-06-24 16:40:18,554 - INFO - Test Instance Acc: 0.4375, Class Acc: 0.4375, Round time: 25.8s
+Test Instance Acc: 0.4375, Class Acc: 0.4375, Round time: 25.8s
+2026-06-24 16:40:18,556 - INFO - Best Instance 0.5375 / Class 0.5375 (round 11)
+Best Instance 0.5375 / Class 0.5375 (round 11)
+2026-06-24 16:40:18,880 - INFO - Communication round 13/20
+Communication round 13/20
+2026-06-24 16:40:44,392 - INFO - Test Instance Acc: 0.6625, Class Acc: 0.6625, Round time: 25.5s
+Test Instance Acc: 0.6625, Class Acc: 0.6625, Round time: 25.5s
+2026-06-24 16:40:44,407 - INFO - Best Instance 0.6625 / Class 0.6625 (round 13)
+Best Instance 0.6625 / Class 0.6625 (round 13)
+2026-06-24 16:40:44,754 - INFO - Communication round 14/20
+Communication round 14/20
+2026-06-24 16:41:10,222 - INFO - Test Instance Acc: 0.5000, Class Acc: 0.5000, Round time: 25.5s
+Test Instance Acc: 0.5000, Class Acc: 0.5000, Round time: 25.5s
+2026-06-24 16:41:10,222 - INFO - Best Instance 0.6625 / Class 0.6625 (round 13)
+Best Instance 0.6625 / Class 0.6625 (round 13)
+2026-06-24 16:41:10,567 - INFO - Communication round 15/20
+Communication round 15/20
+2026-06-24 16:41:35,970 - INFO - Test Instance Acc: 0.5750, Class Acc: 0.5750, Round time: 25.4s
+Test Instance Acc: 0.5750, Class Acc: 0.5750, Round time: 25.4s
+2026-06-24 16:41:35,971 - INFO - Best Instance 0.6625 / Class 0.6625 (round 13)
+Best Instance 0.6625 / Class 0.6625 (round 13)
+2026-06-24 16:41:36,309 - INFO - Communication round 16/20
+Communication round 16/20
+2026-06-24 16:42:02,097 - INFO - Test Instance Acc: 0.7875, Class Acc: 0.7875, Round time: 25.8s
+Test Instance Acc: 0.7875, Class Acc: 0.7875, Round time: 25.8s
+2026-06-24 16:42:02,110 - INFO - Best Instance 0.7875 / Class 0.7875 (round 16)
+Best Instance 0.7875 / Class 0.7875 (round 16)
+2026-06-24 16:42:02,453 - INFO - Communication round 17/20
+Communication round 17/20
+2026-06-24 16:42:28,448 - INFO - Test Instance Acc: 0.4750, Class Acc: 0.4750, Round time: 26.0s
+Test Instance Acc: 0.4750, Class Acc: 0.4750, Round time: 26.0s
+2026-06-24 16:42:28,450 - INFO - Best Instance 0.7875 / Class 0.7875 (round 16)
+Best Instance 0.7875 / Class 0.7875 (round 16)
+2026-06-24 16:42:28,778 - INFO - Communication round 18/20
+Communication round 18/20
+2026-06-24 16:42:54,216 - INFO - Test Instance Acc: 0.4625, Class Acc: 0.4625, Round time: 25.4s
+Test Instance Acc: 0.4625, Class Acc: 0.4625, Round time: 25.4s
+2026-06-24 16:42:54,217 - INFO - Best Instance 0.7875 / Class 0.7875 (round 16)
+Best Instance 0.7875 / Class 0.7875 (round 16)
+2026-06-24 16:42:54,570 - INFO - Communication round 19/20
+Communication round 19/20
+2026-06-24 16:43:21,130 - INFO - Test Instance Acc: 0.7250, Class Acc: 0.7250, Round time: 26.6s
+Test Instance Acc: 0.7250, Class Acc: 0.7250, Round time: 26.6s
+2026-06-24 16:43:21,130 - INFO - Best Instance 0.7875 / Class 0.7875 (round 16)
+Best Instance 0.7875 / Class 0.7875 (round 16)
+2026-06-24 16:43:21,474 - INFO - Communication round 20/20
+Communication round 20/20
+2026-06-24 16:43:46,651 - INFO - Test Instance Acc: 0.4375, Class Acc: 0.4375, Round time: 25.2s
+Test Instance Acc: 0.4375, Class Acc: 0.4375, Round time: 25.2s
+2026-06-24 16:43:46,652 - INFO - Best Instance 0.7875 / Class 0.7875 (round 16)
+Best Instance 0.7875 / Class 0.7875 (round 16)
+2026-06-24 16:43:47,045 - INFO - End of training. Best 0.7875 at round 16.
+End of training. Best 0.7875 at round 16.
+2026-06-24 16:44:05,514 - INFO - Model size: 5.62 MB; Inference: 167.52 ms
+Model size: 5.62 MB; Inference: 167.52 ms

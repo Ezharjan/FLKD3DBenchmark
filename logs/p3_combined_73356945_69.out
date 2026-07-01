@@ -1,0 +1,1612 @@
+[Thu Jun 25 06:51:31 EDT 2026] task 69 on GPU 0: python flkd/advanced_kd_train_classification.py --teacher_model pointnet2_cls_ssg --student_model small_pointnet2 --kd_strategy attention --dataset modelnet40 --seed 123 --batch_size 48 --epoch 200 --num_point 1024 --teacher_path "outputs/modelnet40/flkd/federated/classification/fl_pointnet2_cls_ssg_scaffold_s123/checkpoints/best_model.pth" --log_dir kd_pointnet2_cls_ssg_scaffold+attention_small_pointnet2_s123 --beta 0.5 --data_root data --output_root outputs --num_workers -1 --max_runtime_hours 166.0
+The size of train data is 9843
+The size of test data is 2468
+Loaded teacher from outputs/modelnet40/flkd/federated/classification/fl_pointnet2_cls_ssg_scaffold_s123/checkpoints/best_model.pth
+2026-06-25 06:51:34,264 - INFO - PARAMETER ...
+2026-06-25 06:51:34,264 - INFO - {'use_cpu': False, 'no_amp': False, 'gpu': '0', 'num_workers': -1, 'batch_size': 48, 'teacher_model': 'pointnet2_cls_ssg', 'student_model': 'small_pointnet2', 'num_category': 40, 'dataset': 'modelnet40', 'data_root': 'data', 'output_root': 'outputs', 'train_split': 0.8, 'dataset_seed': 0, 'cache_dataset': True, 'min_class_samples': 1, 'epoch': 200, 'learning_rate': 0.001, 'num_point': 1024, 'optimizer': 'Adam', 'log_dir': 'kd_pointnet2_cls_ssg_scaffold+attention_small_pointnet2_s123', 'decay_rate': 0.0001, 'use_normals': False, 'process_data': False, 'use_uniform_sample': False, 'resume': True, 'kd_strategy': 'attention', 'alpha': 0.5, 'temperature': 2.0, 'beta': 0.5, 'dkd_alpha': 1.0, 'dkd_beta': 8.0, 'crd_temperature': 0.07, 'teacher_path': 'outputs/modelnet40/flkd/federated/classification/fl_pointnet2_cls_ssg_scaffold_s123/checkpoints/best_model.pth', 'teacher_paths': None, 'teacher_weights': None, 'use_hard_labels': 'on', 'unlabeled': False, 'temperature_sweep': None, 'seed': 123, 'max_runtime_hours': 166.0}
+2026-06-25 06:51:34,265 - INFO - KD=attention student=small_pointnet2 AMP=False use_hard=True unlabeled=False T=2.0
+KD=attention student=small_pointnet2 AMP=False use_hard=True unlabeled=False T=2.0
+2026-06-25 06:51:40,033 - INFO - Added 525312 KD-adapter params to optimiser.
+Added 525312 KD-adapter params to optimiser.
+2026-06-25 06:51:40,033 - INFO - Epoch 1/200:
+Epoch 1/200:
+2026-06-25 06:53:24,945 - INFO - Train loss: 0.3108 (104.9s)
+Train loss: 0.3108 (104.9s)
+2026-06-25 06:53:48,754 - INFO - Test instance 0.3805, class 0.2990
+Test instance 0.3805, class 0.2990
+2026-06-25 06:53:48,796 - INFO - Best instance 0.3805, class 0.2990 (epoch 1)
+Best instance 0.3805, class 0.2990 (epoch 1)
+2026-06-25 06:53:48,822 - INFO - Epoch 2/200:
+Epoch 2/200:
+2026-06-25 06:55:23,306 - INFO - Train loss: 0.1616 (94.5s)
+Train loss: 0.1616 (94.5s)
+2026-06-25 06:55:46,311 - INFO - Test instance 0.5028, class 0.3787
+Test instance 0.5028, class 0.3787
+2026-06-25 06:55:46,340 - INFO - Best instance 0.5028, class 0.3787 (epoch 2)
+Best instance 0.5028, class 0.3787 (epoch 2)
+2026-06-25 06:55:46,367 - INFO - Epoch 3/200:
+Epoch 3/200:
+2026-06-25 06:57:21,205 - INFO - Train loss: 0.1403 (94.8s)
+Train loss: 0.1403 (94.8s)
+2026-06-25 06:57:44,291 - INFO - Test instance 0.5300, class 0.4061
+Test instance 0.5300, class 0.4061
+2026-06-25 06:57:44,316 - INFO - Best instance 0.5300, class 0.4061 (epoch 3)
+Best instance 0.5300, class 0.4061 (epoch 3)
+2026-06-25 06:57:44,340 - INFO - Epoch 4/200:
+Epoch 4/200:
+2026-06-25 06:59:18,802 - INFO - Train loss: 0.1301 (94.5s)
+Train loss: 0.1301 (94.5s)
+2026-06-25 06:59:41,850 - INFO - Test instance 0.5296, class 0.4033
+Test instance 0.5296, class 0.4033
+2026-06-25 06:59:41,851 - INFO - Best instance 0.5300, class 0.4061 (epoch 3)
+Best instance 0.5300, class 0.4061 (epoch 3)
+2026-06-25 06:59:41,877 - INFO - Epoch 5/200:
+Epoch 5/200:
+2026-06-25 07:01:15,948 - INFO - Train loss: 0.1223 (94.1s)
+Train loss: 0.1223 (94.1s)
+2026-06-25 07:01:38,877 - INFO - Test instance 0.5863, class 0.4485
+Test instance 0.5863, class 0.4485
+2026-06-25 07:01:38,900 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:01:38,925 - INFO - Epoch 6/200:
+Epoch 6/200:
+2026-06-25 07:03:13,302 - INFO - Train loss: 0.1200 (94.4s)
+Train loss: 0.1200 (94.4s)
+2026-06-25 07:03:36,433 - INFO - Test instance 0.5478, class 0.4200
+Test instance 0.5478, class 0.4200
+2026-06-25 07:03:36,434 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:03:36,460 - INFO - Epoch 7/200:
+Epoch 7/200:
+2026-06-25 07:05:10,295 - INFO - Train loss: 0.1177 (93.8s)
+Train loss: 0.1177 (93.8s)
+2026-06-25 07:05:33,419 - INFO - Test instance 0.5648, class 0.4364
+Test instance 0.5648, class 0.4364
+2026-06-25 07:05:33,420 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:05:33,445 - INFO - Epoch 8/200:
+Epoch 8/200:
+2026-06-25 07:07:08,071 - INFO - Train loss: 0.1176 (94.6s)
+Train loss: 0.1176 (94.6s)
+2026-06-25 07:07:31,069 - INFO - Test instance 0.5446, class 0.4231
+Test instance 0.5446, class 0.4231
+2026-06-25 07:07:31,070 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:07:31,095 - INFO - Epoch 9/200:
+Epoch 9/200:
+2026-06-25 07:09:05,801 - INFO - Train loss: 0.1149 (94.7s)
+Train loss: 0.1149 (94.7s)
+2026-06-25 07:09:29,113 - INFO - Test instance 0.5754, class 0.4421
+Test instance 0.5754, class 0.4421
+2026-06-25 07:09:29,114 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:09:29,140 - INFO - Epoch 10/200:
+Epoch 10/200:
+2026-06-25 07:11:03,634 - INFO - Train loss: 0.1138 (94.5s)
+Train loss: 0.1138 (94.5s)
+2026-06-25 07:11:26,550 - INFO - Test instance 0.5535, class 0.4324
+Test instance 0.5535, class 0.4324
+2026-06-25 07:11:26,550 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:11:26,577 - INFO - Epoch 11/200:
+Epoch 11/200:
+2026-06-25 07:13:01,150 - INFO - Train loss: 0.1133 (94.6s)
+Train loss: 0.1133 (94.6s)
+2026-06-25 07:13:24,147 - INFO - Test instance 0.5851, class 0.4597
+Test instance 0.5851, class 0.4597
+2026-06-25 07:13:24,150 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:13:24,176 - INFO - Epoch 12/200:
+Epoch 12/200:
+2026-06-25 07:14:58,695 - INFO - Train loss: 0.1107 (94.5s)
+Train loss: 0.1107 (94.5s)
+2026-06-25 07:15:21,736 - INFO - Test instance 0.5490, class 0.4313
+Test instance 0.5490, class 0.4313
+2026-06-25 07:15:21,736 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:15:21,763 - INFO - Epoch 13/200:
+Epoch 13/200:
+2026-06-25 07:16:56,429 - INFO - Train loss: 0.1130 (94.7s)
+Train loss: 0.1130 (94.7s)
+2026-06-25 07:17:19,399 - INFO - Test instance 0.5519, class 0.4280
+Test instance 0.5519, class 0.4280
+2026-06-25 07:17:19,399 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:17:19,430 - INFO - Epoch 14/200:
+Epoch 14/200:
+2026-06-25 07:18:53,981 - INFO - Train loss: 0.1098 (94.6s)
+Train loss: 0.1098 (94.6s)
+2026-06-25 07:19:16,912 - INFO - Test instance 0.5288, class 0.4170
+Test instance 0.5288, class 0.4170
+2026-06-25 07:19:16,912 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:19:16,941 - INFO - Epoch 15/200:
+Epoch 15/200:
+2026-06-25 07:20:51,348 - INFO - Train loss: 0.1087 (94.4s)
+Train loss: 0.1087 (94.4s)
+2026-06-25 07:21:14,460 - INFO - Test instance 0.5502, class 0.4239
+Test instance 0.5502, class 0.4239
+2026-06-25 07:21:14,460 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:21:14,486 - INFO - Epoch 16/200:
+Epoch 16/200:
+2026-06-25 07:22:48,981 - INFO - Train loss: 0.1090 (94.5s)
+Train loss: 0.1090 (94.5s)
+2026-06-25 07:23:12,049 - INFO - Test instance 0.5547, class 0.4308
+Test instance 0.5547, class 0.4308
+2026-06-25 07:23:12,050 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:23:12,075 - INFO - Epoch 17/200:
+Epoch 17/200:
+2026-06-25 07:24:46,492 - INFO - Train loss: 0.1091 (94.4s)
+Train loss: 0.1091 (94.4s)
+2026-06-25 07:25:09,473 - INFO - Test instance 0.5543, class 0.4372
+Test instance 0.5543, class 0.4372
+2026-06-25 07:25:09,474 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:25:09,499 - INFO - Epoch 18/200:
+Epoch 18/200:
+2026-06-25 07:26:43,873 - INFO - Train loss: 0.1060 (94.4s)
+Train loss: 0.1060 (94.4s)
+2026-06-25 07:27:07,135 - INFO - Test instance 0.5612, class 0.4337
+Test instance 0.5612, class 0.4337
+2026-06-25 07:27:07,136 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:27:07,163 - INFO - Epoch 19/200:
+Epoch 19/200:
+2026-06-25 07:28:41,546 - INFO - Train loss: 0.1086 (94.4s)
+Train loss: 0.1086 (94.4s)
+2026-06-25 07:29:04,566 - INFO - Test instance 0.5596, class 0.4458
+Test instance 0.5596, class 0.4458
+2026-06-25 07:29:04,566 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:29:04,593 - INFO - Epoch 20/200:
+Epoch 20/200:
+2026-06-25 07:30:38,699 - INFO - Train loss: 0.1067 (94.1s)
+Train loss: 0.1067 (94.1s)
+2026-06-25 07:31:01,725 - INFO - Test instance 0.5575, class 0.4346
+Test instance 0.5575, class 0.4346
+2026-06-25 07:31:01,726 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:31:01,754 - INFO - Epoch 21/200:
+Epoch 21/200:
+2026-06-25 07:32:36,010 - INFO - Train loss: 0.1049 (94.3s)
+Train loss: 0.1049 (94.3s)
+2026-06-25 07:32:58,952 - INFO - Test instance 0.5656, class 0.4500
+Test instance 0.5656, class 0.4500
+2026-06-25 07:32:58,953 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:32:58,979 - INFO - Epoch 22/200:
+Epoch 22/200:
+2026-06-25 07:34:33,142 - INFO - Train loss: 0.1035 (94.2s)
+Train loss: 0.1035 (94.2s)
+2026-06-25 07:34:56,206 - INFO - Test instance 0.5814, class 0.4558
+Test instance 0.5814, class 0.4558
+2026-06-25 07:34:56,206 - INFO - Best instance 0.5863, class 0.4485 (epoch 5)
+Best instance 0.5863, class 0.4485 (epoch 5)
+2026-06-25 07:34:56,231 - INFO - Epoch 23/200:
+Epoch 23/200:
+2026-06-25 07:36:30,954 - INFO - Train loss: 0.1033 (94.7s)
+Train loss: 0.1033 (94.7s)
+2026-06-25 07:36:53,889 - INFO - Test instance 0.6001, class 0.4685
+Test instance 0.6001, class 0.4685
+2026-06-25 07:36:53,913 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:36:53,935 - INFO - Epoch 24/200:
+Epoch 24/200:
+2026-06-25 07:38:28,342 - INFO - Train loss: 0.1034 (94.4s)
+Train loss: 0.1034 (94.4s)
+2026-06-25 07:38:51,448 - INFO - Test instance 0.6001, class 0.4873
+Test instance 0.6001, class 0.4873
+2026-06-25 07:38:51,448 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:38:51,474 - INFO - Epoch 25/200:
+Epoch 25/200:
+2026-06-25 07:40:25,444 - INFO - Train loss: 0.1015 (94.0s)
+Train loss: 0.1015 (94.0s)
+2026-06-25 07:40:48,684 - INFO - Test instance 0.5640, class 0.4255
+Test instance 0.5640, class 0.4255
+2026-06-25 07:40:48,686 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:40:48,712 - INFO - Epoch 26/200:
+Epoch 26/200:
+2026-06-25 07:42:23,305 - INFO - Train loss: 0.1028 (94.6s)
+Train loss: 0.1028 (94.6s)
+2026-06-25 07:42:46,331 - INFO - Test instance 0.5875, class 0.4603
+Test instance 0.5875, class 0.4603
+2026-06-25 07:42:46,332 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:42:46,377 - INFO - Epoch 27/200:
+Epoch 27/200:
+2026-06-25 07:44:20,032 - INFO - Train loss: 0.1025 (93.7s)
+Train loss: 0.1025 (93.7s)
+2026-06-25 07:44:43,042 - INFO - Test instance 0.5628, class 0.4383
+Test instance 0.5628, class 0.4383
+2026-06-25 07:44:43,042 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:44:43,067 - INFO - Epoch 28/200:
+Epoch 28/200:
+2026-06-25 07:46:17,201 - INFO - Train loss: 0.1022 (94.1s)
+Train loss: 0.1022 (94.1s)
+2026-06-25 07:46:40,253 - INFO - Test instance 0.5701, class 0.4565
+Test instance 0.5701, class 0.4565
+2026-06-25 07:46:40,254 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:46:40,278 - INFO - Epoch 29/200:
+Epoch 29/200:
+2026-06-25 07:48:15,019 - INFO - Train loss: 0.1022 (94.7s)
+Train loss: 0.1022 (94.7s)
+2026-06-25 07:48:37,947 - INFO - Test instance 0.5972, class 0.4715
+Test instance 0.5972, class 0.4715
+2026-06-25 07:48:37,947 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:48:37,973 - INFO - Epoch 30/200:
+Epoch 30/200:
+2026-06-25 07:50:12,063 - INFO - Train loss: 0.1018 (94.1s)
+Train loss: 0.1018 (94.1s)
+2026-06-25 07:50:35,203 - INFO - Test instance 0.5502, class 0.4412
+Test instance 0.5502, class 0.4412
+2026-06-25 07:50:35,204 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:50:35,237 - INFO - Epoch 31/200:
+Epoch 31/200:
+2026-06-25 07:52:09,154 - INFO - Train loss: 0.1018 (93.9s)
+Train loss: 0.1018 (93.9s)
+2026-06-25 07:52:32,095 - INFO - Test instance 0.5701, class 0.4487
+Test instance 0.5701, class 0.4487
+2026-06-25 07:52:32,095 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:52:32,122 - INFO - Epoch 32/200:
+Epoch 32/200:
+2026-06-25 07:54:05,854 - INFO - Train loss: 0.1018 (93.7s)
+Train loss: 0.1018 (93.7s)
+2026-06-25 07:54:28,985 - INFO - Test instance 0.5794, class 0.4515
+Test instance 0.5794, class 0.4515
+2026-06-25 07:54:28,986 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:54:29,011 - INFO - Epoch 33/200:
+Epoch 33/200:
+2026-06-25 07:56:03,853 - INFO - Train loss: 0.1016 (94.8s)
+Train loss: 0.1016 (94.8s)
+2026-06-25 07:56:26,836 - INFO - Test instance 0.5806, class 0.4603
+Test instance 0.5806, class 0.4603
+2026-06-25 07:56:26,836 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:56:26,862 - INFO - Epoch 34/200:
+Epoch 34/200:
+2026-06-25 07:58:01,456 - INFO - Train loss: 0.1030 (94.6s)
+Train loss: 0.1030 (94.6s)
+2026-06-25 07:58:24,554 - INFO - Test instance 0.5835, class 0.4572
+Test instance 0.5835, class 0.4572
+2026-06-25 07:58:24,554 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 07:58:24,579 - INFO - Epoch 35/200:
+Epoch 35/200:
+2026-06-25 07:59:58,906 - INFO - Train loss: 0.0999 (94.3s)
+Train loss: 0.0999 (94.3s)
+2026-06-25 08:00:21,876 - INFO - Test instance 0.5628, class 0.4497
+Test instance 0.5628, class 0.4497
+2026-06-25 08:00:21,876 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:00:21,901 - INFO - Epoch 36/200:
+Epoch 36/200:
+2026-06-25 08:01:56,228 - INFO - Train loss: 0.1025 (94.3s)
+Train loss: 0.1025 (94.3s)
+2026-06-25 08:02:19,282 - INFO - Test instance 0.5823, class 0.4539
+Test instance 0.5823, class 0.4539
+2026-06-25 08:02:19,282 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:02:19,307 - INFO - Epoch 37/200:
+Epoch 37/200:
+2026-06-25 08:03:53,224 - INFO - Train loss: 0.1009 (93.9s)
+Train loss: 0.1009 (93.9s)
+2026-06-25 08:04:16,165 - INFO - Test instance 0.5802, class 0.4512
+Test instance 0.5802, class 0.4512
+2026-06-25 08:04:16,165 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:04:16,192 - INFO - Epoch 38/200:
+Epoch 38/200:
+2026-06-25 08:05:50,577 - INFO - Train loss: 0.1010 (94.4s)
+Train loss: 0.1010 (94.4s)
+2026-06-25 08:06:13,509 - INFO - Test instance 0.5855, class 0.4655
+Test instance 0.5855, class 0.4655
+2026-06-25 08:06:13,509 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:06:13,533 - INFO - Epoch 39/200:
+Epoch 39/200:
+2026-06-25 08:07:47,662 - INFO - Train loss: 0.1025 (94.1s)
+Train loss: 0.1025 (94.1s)
+2026-06-25 08:08:10,877 - INFO - Test instance 0.5750, class 0.4366
+Test instance 0.5750, class 0.4366
+2026-06-25 08:08:10,877 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:08:10,901 - INFO - Epoch 40/200:
+Epoch 40/200:
+2026-06-25 08:09:45,192 - INFO - Train loss: 0.1004 (94.3s)
+Train loss: 0.1004 (94.3s)
+2026-06-25 08:10:08,177 - INFO - Test instance 0.5981, class 0.4682
+Test instance 0.5981, class 0.4682
+2026-06-25 08:10:08,177 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:10:08,203 - INFO - Epoch 41/200:
+Epoch 41/200:
+2026-06-25 08:11:42,268 - INFO - Train loss: 0.0980 (94.1s)
+Train loss: 0.0980 (94.1s)
+2026-06-25 08:12:05,543 - INFO - Test instance 0.5895, class 0.4600
+Test instance 0.5895, class 0.4600
+2026-06-25 08:12:05,543 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:12:05,567 - INFO - Epoch 42/200:
+Epoch 42/200:
+2026-06-25 08:13:39,505 - INFO - Train loss: 0.0962 (93.9s)
+Train loss: 0.0962 (93.9s)
+2026-06-25 08:14:02,792 - INFO - Test instance 0.5750, class 0.4556
+Test instance 0.5750, class 0.4556
+2026-06-25 08:14:02,793 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:14:02,817 - INFO - Epoch 43/200:
+Epoch 43/200:
+2026-06-25 08:15:36,887 - INFO - Train loss: 0.0982 (94.1s)
+Train loss: 0.0982 (94.1s)
+2026-06-25 08:16:00,131 - INFO - Test instance 0.5669, class 0.4440
+Test instance 0.5669, class 0.4440
+2026-06-25 08:16:00,131 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:16:00,157 - INFO - Epoch 44/200:
+Epoch 44/200:
+2026-06-25 08:17:33,883 - INFO - Train loss: 0.0992 (93.7s)
+Train loss: 0.0992 (93.7s)
+2026-06-25 08:17:56,835 - INFO - Test instance 0.5932, class 0.4635
+Test instance 0.5932, class 0.4635
+2026-06-25 08:17:56,836 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:17:56,866 - INFO - Epoch 45/200:
+Epoch 45/200:
+2026-06-25 08:19:31,394 - INFO - Train loss: 0.0962 (94.5s)
+Train loss: 0.0962 (94.5s)
+2026-06-25 08:19:54,268 - INFO - Test instance 0.5968, class 0.4779
+Test instance 0.5968, class 0.4779
+2026-06-25 08:19:54,268 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:19:54,295 - INFO - Epoch 46/200:
+Epoch 46/200:
+2026-06-25 08:21:28,547 - INFO - Train loss: 0.0950 (94.3s)
+Train loss: 0.0950 (94.3s)
+2026-06-25 08:21:51,404 - INFO - Test instance 0.5920, class 0.4574
+Test instance 0.5920, class 0.4574
+2026-06-25 08:21:51,404 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:21:51,429 - INFO - Epoch 47/200:
+Epoch 47/200:
+2026-06-25 08:23:25,669 - INFO - Train loss: 0.0980 (94.2s)
+Train loss: 0.0980 (94.2s)
+2026-06-25 08:23:48,759 - INFO - Test instance 0.5806, class 0.4437
+Test instance 0.5806, class 0.4437
+2026-06-25 08:23:48,759 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:23:48,783 - INFO - Epoch 48/200:
+Epoch 48/200:
+2026-06-25 08:25:23,013 - INFO - Train loss: 0.0975 (94.2s)
+Train loss: 0.0975 (94.2s)
+2026-06-25 08:25:46,062 - INFO - Test instance 0.5900, class 0.4630
+Test instance 0.5900, class 0.4630
+2026-06-25 08:25:46,062 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:25:46,087 - INFO - Epoch 49/200:
+Epoch 49/200:
+2026-06-25 08:27:20,027 - INFO - Train loss: 0.0996 (93.9s)
+Train loss: 0.0996 (93.9s)
+2026-06-25 08:27:42,997 - INFO - Test instance 0.5802, class 0.4473
+Test instance 0.5802, class 0.4473
+2026-06-25 08:27:42,997 - INFO - Best instance 0.6001, class 0.4685 (epoch 23)
+Best instance 0.6001, class 0.4685 (epoch 23)
+2026-06-25 08:27:43,025 - INFO - Epoch 50/200:
+Epoch 50/200:
+2026-06-25 08:29:17,046 - INFO - Train loss: 0.0971 (94.0s)
+Train loss: 0.0971 (94.0s)
+2026-06-25 08:29:40,105 - INFO - Test instance 0.6033, class 0.4702
+Test instance 0.6033, class 0.4702
+2026-06-25 08:29:40,130 - INFO - Best instance 0.6033, class 0.4702 (epoch 50)
+Best instance 0.6033, class 0.4702 (epoch 50)
+2026-06-25 08:29:40,153 - INFO - Epoch 51/200:
+Epoch 51/200:
+2026-06-25 08:31:14,299 - INFO - Train loss: 0.0987 (94.1s)
+Train loss: 0.0987 (94.1s)
+2026-06-25 08:31:37,354 - INFO - Test instance 0.5859, class 0.4563
+Test instance 0.5859, class 0.4563
+2026-06-25 08:31:37,357 - INFO - Best instance 0.6033, class 0.4702 (epoch 50)
+Best instance 0.6033, class 0.4702 (epoch 50)
+2026-06-25 08:31:37,380 - INFO - Epoch 52/200:
+Epoch 52/200:
+2026-06-25 08:33:11,453 - INFO - Train loss: 0.0963 (94.1s)
+Train loss: 0.0963 (94.1s)
+2026-06-25 08:33:34,514 - INFO - Test instance 0.6102, class 0.4712
+Test instance 0.6102, class 0.4712
+2026-06-25 08:33:34,536 - INFO - Best instance 0.6102, class 0.4712 (epoch 52)
+Best instance 0.6102, class 0.4712 (epoch 52)
+2026-06-25 08:33:34,558 - INFO - Epoch 53/200:
+Epoch 53/200:
+2026-06-25 08:35:09,196 - INFO - Train loss: 0.0976 (94.6s)
+Train loss: 0.0976 (94.6s)
+2026-06-25 08:35:32,133 - INFO - Test instance 0.5758, class 0.4510
+Test instance 0.5758, class 0.4510
+2026-06-25 08:35:32,134 - INFO - Best instance 0.6102, class 0.4712 (epoch 52)
+Best instance 0.6102, class 0.4712 (epoch 52)
+2026-06-25 08:35:32,158 - INFO - Epoch 54/200:
+Epoch 54/200:
+2026-06-25 08:37:06,224 - INFO - Train loss: 0.0972 (94.1s)
+Train loss: 0.0972 (94.1s)
+2026-06-25 08:37:29,187 - INFO - Test instance 0.5883, class 0.4634
+Test instance 0.5883, class 0.4634
+2026-06-25 08:37:29,187 - INFO - Best instance 0.6102, class 0.4712 (epoch 52)
+Best instance 0.6102, class 0.4712 (epoch 52)
+2026-06-25 08:37:29,213 - INFO - Epoch 55/200:
+Epoch 55/200:
+2026-06-25 08:39:03,244 - INFO - Train loss: 0.0960 (94.0s)
+Train loss: 0.0960 (94.0s)
+2026-06-25 08:39:26,529 - INFO - Test instance 0.5912, class 0.4613
+Test instance 0.5912, class 0.4613
+2026-06-25 08:39:26,530 - INFO - Best instance 0.6102, class 0.4712 (epoch 52)
+Best instance 0.6102, class 0.4712 (epoch 52)
+2026-06-25 08:39:26,555 - INFO - Epoch 56/200:
+Epoch 56/200:
+2026-06-25 08:41:00,639 - INFO - Train loss: 0.0972 (94.1s)
+Train loss: 0.0972 (94.1s)
+2026-06-25 08:41:23,740 - INFO - Test instance 0.6053, class 0.4704
+Test instance 0.6053, class 0.4704
+2026-06-25 08:41:23,741 - INFO - Best instance 0.6102, class 0.4712 (epoch 52)
+Best instance 0.6102, class 0.4712 (epoch 52)
+2026-06-25 08:41:23,766 - INFO - Epoch 57/200:
+Epoch 57/200:
+2026-06-25 08:42:58,029 - INFO - Train loss: 0.0965 (94.3s)
+Train loss: 0.0965 (94.3s)
+2026-06-25 08:43:21,207 - INFO - Test instance 0.5754, class 0.4571
+Test instance 0.5754, class 0.4571
+2026-06-25 08:43:21,207 - INFO - Best instance 0.6102, class 0.4712 (epoch 52)
+Best instance 0.6102, class 0.4712 (epoch 52)
+2026-06-25 08:43:21,232 - INFO - Epoch 58/200:
+Epoch 58/200:
+2026-06-25 08:44:54,910 - INFO - Train loss: 0.0966 (93.7s)
+Train loss: 0.0966 (93.7s)
+2026-06-25 08:45:17,997 - INFO - Test instance 0.6114, class 0.4712
+Test instance 0.6114, class 0.4712
+2026-06-25 08:45:18,021 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 08:45:18,045 - INFO - Epoch 59/200:
+Epoch 59/200:
+2026-06-25 08:46:52,178 - INFO - Train loss: 0.0968 (94.1s)
+Train loss: 0.0968 (94.1s)
+2026-06-25 08:47:15,093 - INFO - Test instance 0.5786, class 0.4436
+Test instance 0.5786, class 0.4436
+2026-06-25 08:47:15,094 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 08:47:15,118 - INFO - Epoch 60/200:
+Epoch 60/200:
+2026-06-25 08:48:50,086 - INFO - Train loss: 0.0940 (95.0s)
+Train loss: 0.0940 (95.0s)
+2026-06-25 08:49:13,313 - INFO - Test instance 0.6066, class 0.4783
+Test instance 0.6066, class 0.4783
+2026-06-25 08:49:13,314 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 08:49:13,339 - INFO - Epoch 61/200:
+Epoch 61/200:
+2026-06-25 08:50:47,435 - INFO - Train loss: 0.0956 (94.1s)
+Train loss: 0.0956 (94.1s)
+2026-06-25 08:51:10,568 - INFO - Test instance 0.6053, class 0.4730
+Test instance 0.6053, class 0.4730
+2026-06-25 08:51:10,568 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 08:51:10,593 - INFO - Epoch 62/200:
+Epoch 62/200:
+2026-06-25 08:52:44,829 - INFO - Train loss: 0.0932 (94.2s)
+Train loss: 0.0932 (94.2s)
+2026-06-25 08:53:07,702 - INFO - Test instance 0.5895, class 0.4494
+Test instance 0.5895, class 0.4494
+2026-06-25 08:53:07,702 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 08:53:07,728 - INFO - Epoch 63/200:
+Epoch 63/200:
+2026-06-25 08:54:42,023 - INFO - Train loss: 0.0927 (94.3s)
+Train loss: 0.0927 (94.3s)
+2026-06-25 08:55:05,192 - INFO - Test instance 0.5891, class 0.4584
+Test instance 0.5891, class 0.4584
+2026-06-25 08:55:05,193 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 08:55:05,217 - INFO - Epoch 64/200:
+Epoch 64/200:
+2026-06-25 08:56:39,520 - INFO - Train loss: 0.0927 (94.3s)
+Train loss: 0.0927 (94.3s)
+2026-06-25 08:57:02,655 - INFO - Test instance 0.6094, class 0.4841
+Test instance 0.6094, class 0.4841
+2026-06-25 08:57:02,656 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 08:57:02,681 - INFO - Epoch 65/200:
+Epoch 65/200:
+2026-06-25 08:58:36,766 - INFO - Train loss: 0.0920 (94.1s)
+Train loss: 0.0920 (94.1s)
+2026-06-25 08:58:59,745 - INFO - Test instance 0.5956, class 0.4728
+Test instance 0.5956, class 0.4728
+2026-06-25 08:58:59,745 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 08:58:59,770 - INFO - Epoch 66/200:
+Epoch 66/200:
+2026-06-25 09:00:33,618 - INFO - Train loss: 0.0932 (93.8s)
+Train loss: 0.0932 (93.8s)
+2026-06-25 09:00:56,693 - INFO - Test instance 0.6078, class 0.4718
+Test instance 0.6078, class 0.4718
+2026-06-25 09:00:56,693 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:00:56,718 - INFO - Epoch 67/200:
+Epoch 67/200:
+2026-06-25 09:02:30,654 - INFO - Train loss: 0.0937 (93.9s)
+Train loss: 0.0937 (93.9s)
+2026-06-25 09:02:53,663 - INFO - Test instance 0.5883, class 0.4541
+Test instance 0.5883, class 0.4541
+2026-06-25 09:02:53,663 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:02:53,687 - INFO - Epoch 68/200:
+Epoch 68/200:
+2026-06-25 09:04:27,461 - INFO - Train loss: 0.0936 (93.8s)
+Train loss: 0.0936 (93.8s)
+2026-06-25 09:04:50,426 - INFO - Test instance 0.6033, class 0.4734
+Test instance 0.6033, class 0.4734
+2026-06-25 09:04:50,426 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:04:50,453 - INFO - Epoch 69/200:
+Epoch 69/200:
+2026-06-25 09:06:24,427 - INFO - Train loss: 0.0937 (94.0s)
+Train loss: 0.0937 (94.0s)
+2026-06-25 09:06:47,437 - INFO - Test instance 0.6009, class 0.4727
+Test instance 0.6009, class 0.4727
+2026-06-25 09:06:47,437 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:06:47,464 - INFO - Epoch 70/200:
+Epoch 70/200:
+2026-06-25 09:08:21,631 - INFO - Train loss: 0.0933 (94.2s)
+Train loss: 0.0933 (94.2s)
+2026-06-25 09:08:44,645 - INFO - Test instance 0.5900, class 0.4647
+Test instance 0.5900, class 0.4647
+2026-06-25 09:08:44,645 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:08:44,670 - INFO - Epoch 71/200:
+Epoch 71/200:
+2026-06-25 09:10:18,965 - INFO - Train loss: 0.0931 (94.3s)
+Train loss: 0.0931 (94.3s)
+2026-06-25 09:10:42,019 - INFO - Test instance 0.6049, class 0.4748
+Test instance 0.6049, class 0.4748
+2026-06-25 09:10:42,019 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:10:42,065 - INFO - Epoch 72/200:
+Epoch 72/200:
+2026-06-25 09:12:16,001 - INFO - Train loss: 0.0929 (93.9s)
+Train loss: 0.0929 (93.9s)
+2026-06-25 09:12:39,082 - INFO - Test instance 0.5985, class 0.4714
+Test instance 0.5985, class 0.4714
+2026-06-25 09:12:39,082 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:12:39,107 - INFO - Epoch 73/200:
+Epoch 73/200:
+2026-06-25 09:14:13,347 - INFO - Train loss: 0.0925 (94.2s)
+Train loss: 0.0925 (94.2s)
+2026-06-25 09:14:36,456 - INFO - Test instance 0.6025, class 0.4805
+Test instance 0.6025, class 0.4805
+2026-06-25 09:14:36,457 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:14:36,483 - INFO - Epoch 74/200:
+Epoch 74/200:
+2026-06-25 09:16:10,559 - INFO - Train loss: 0.0927 (94.1s)
+Train loss: 0.0927 (94.1s)
+2026-06-25 09:16:33,473 - INFO - Test instance 0.6001, class 0.4644
+Test instance 0.6001, class 0.4644
+2026-06-25 09:16:33,473 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:16:33,498 - INFO - Epoch 75/200:
+Epoch 75/200:
+2026-06-25 09:18:07,846 - INFO - Train loss: 0.0939 (94.3s)
+Train loss: 0.0939 (94.3s)
+2026-06-25 09:18:30,995 - INFO - Test instance 0.6017, class 0.4626
+Test instance 0.6017, class 0.4626
+2026-06-25 09:18:30,996 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:18:31,021 - INFO - Epoch 76/200:
+Epoch 76/200:
+2026-06-25 09:20:05,169 - INFO - Train loss: 0.0920 (94.1s)
+Train loss: 0.0920 (94.1s)
+2026-06-25 09:20:28,161 - INFO - Test instance 0.6037, class 0.4776
+Test instance 0.6037, class 0.4776
+2026-06-25 09:20:28,165 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:20:28,189 - INFO - Epoch 77/200:
+Epoch 77/200:
+2026-06-25 09:22:02,626 - INFO - Train loss: 0.0937 (94.4s)
+Train loss: 0.0937 (94.4s)
+2026-06-25 09:22:25,893 - INFO - Test instance 0.6001, class 0.4773
+Test instance 0.6001, class 0.4773
+2026-06-25 09:22:25,893 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:22:25,917 - INFO - Epoch 78/200:
+Epoch 78/200:
+2026-06-25 09:23:59,983 - INFO - Train loss: 0.0924 (94.1s)
+Train loss: 0.0924 (94.1s)
+2026-06-25 09:24:22,998 - INFO - Test instance 0.5912, class 0.4649
+Test instance 0.5912, class 0.4649
+2026-06-25 09:24:22,998 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:24:23,024 - INFO - Epoch 79/200:
+Epoch 79/200:
+2026-06-25 09:25:57,033 - INFO - Train loss: 0.0927 (94.0s)
+Train loss: 0.0927 (94.0s)
+2026-06-25 09:26:20,152 - INFO - Test instance 0.5956, class 0.4586
+Test instance 0.5956, class 0.4586
+2026-06-25 09:26:20,152 - INFO - Best instance 0.6114, class 0.4712 (epoch 58)
+Best instance 0.6114, class 0.4712 (epoch 58)
+2026-06-25 09:26:20,177 - INFO - Epoch 80/200:
+Epoch 80/200:
+2026-06-25 09:27:54,871 - INFO - Train loss: 0.0935 (94.7s)
+Train loss: 0.0935 (94.7s)
+2026-06-25 09:28:17,745 - INFO - Test instance 0.6151, class 0.4967
+Test instance 0.6151, class 0.4967
+2026-06-25 09:28:17,767 - INFO - Best instance 0.6151, class 0.4967 (epoch 80)
+Best instance 0.6151, class 0.4967 (epoch 80)
+2026-06-25 09:28:17,791 - INFO - Epoch 81/200:
+Epoch 81/200:
+2026-06-25 09:29:51,943 - INFO - Train loss: 0.0920 (94.2s)
+Train loss: 0.0920 (94.2s)
+2026-06-25 09:30:15,013 - INFO - Test instance 0.6058, class 0.4751
+Test instance 0.6058, class 0.4751
+2026-06-25 09:30:15,013 - INFO - Best instance 0.6151, class 0.4967 (epoch 80)
+Best instance 0.6151, class 0.4967 (epoch 80)
+2026-06-25 09:30:15,038 - INFO - Epoch 82/200:
+Epoch 82/200:
+2026-06-25 09:31:49,307 - INFO - Train loss: 0.0908 (94.3s)
+Train loss: 0.0908 (94.3s)
+2026-06-25 09:32:12,322 - INFO - Test instance 0.6175, class 0.4902
+Test instance 0.6175, class 0.4902
+2026-06-25 09:32:12,347 - INFO - Best instance 0.6175, class 0.4902 (epoch 82)
+Best instance 0.6175, class 0.4902 (epoch 82)
+2026-06-25 09:32:12,370 - INFO - Epoch 83/200:
+Epoch 83/200:
+2026-06-25 09:33:46,871 - INFO - Train loss: 0.0914 (94.5s)
+Train loss: 0.0914 (94.5s)
+2026-06-25 09:34:09,821 - INFO - Test instance 0.6183, class 0.4875
+Test instance 0.6183, class 0.4875
+2026-06-25 09:34:09,843 - INFO - Best instance 0.6183, class 0.4875 (epoch 83)
+Best instance 0.6183, class 0.4875 (epoch 83)
+2026-06-25 09:34:09,868 - INFO - Epoch 84/200:
+Epoch 84/200:
+2026-06-25 09:35:44,312 - INFO - Train loss: 0.0897 (94.4s)
+Train loss: 0.0897 (94.4s)
+2026-06-25 09:36:07,444 - INFO - Test instance 0.6110, class 0.4777
+Test instance 0.6110, class 0.4777
+2026-06-25 09:36:07,444 - INFO - Best instance 0.6183, class 0.4875 (epoch 83)
+Best instance 0.6183, class 0.4875 (epoch 83)
+2026-06-25 09:36:07,472 - INFO - Epoch 85/200:
+Epoch 85/200:
+2026-06-25 09:37:41,934 - INFO - Train loss: 0.0909 (94.5s)
+Train loss: 0.0909 (94.5s)
+2026-06-25 09:38:04,903 - INFO - Test instance 0.5940, class 0.4647
+Test instance 0.5940, class 0.4647
+2026-06-25 09:38:04,904 - INFO - Best instance 0.6183, class 0.4875 (epoch 83)
+Best instance 0.6183, class 0.4875 (epoch 83)
+2026-06-25 09:38:04,927 - INFO - Epoch 86/200:
+Epoch 86/200:
+2026-06-25 09:39:39,085 - INFO - Train loss: 0.0914 (94.2s)
+Train loss: 0.0914 (94.2s)
+2026-06-25 09:40:02,210 - INFO - Test instance 0.6021, class 0.4759
+Test instance 0.6021, class 0.4759
+2026-06-25 09:40:02,210 - INFO - Best instance 0.6183, class 0.4875 (epoch 83)
+Best instance 0.6183, class 0.4875 (epoch 83)
+2026-06-25 09:40:02,235 - INFO - Epoch 87/200:
+Epoch 87/200:
+2026-06-25 09:41:36,048 - INFO - Train loss: 0.0898 (93.8s)
+Train loss: 0.0898 (93.8s)
+2026-06-25 09:41:59,121 - INFO - Test instance 0.6163, class 0.4849
+Test instance 0.6163, class 0.4849
+2026-06-25 09:41:59,121 - INFO - Best instance 0.6183, class 0.4875 (epoch 83)
+Best instance 0.6183, class 0.4875 (epoch 83)
+2026-06-25 09:41:59,148 - INFO - Epoch 88/200:
+Epoch 88/200:
+2026-06-25 09:43:33,120 - INFO - Train loss: 0.0911 (94.0s)
+Train loss: 0.0911 (94.0s)
+2026-06-25 09:43:56,139 - INFO - Test instance 0.6203, class 0.4862
+Test instance 0.6203, class 0.4862
+2026-06-25 09:43:56,162 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 09:43:56,184 - INFO - Epoch 89/200:
+Epoch 89/200:
+2026-06-25 09:45:29,740 - INFO - Train loss: 0.0925 (93.6s)
+Train loss: 0.0925 (93.6s)
+2026-06-25 09:45:52,899 - INFO - Test instance 0.6029, class 0.4732
+Test instance 0.6029, class 0.4732
+2026-06-25 09:45:52,899 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 09:45:52,924 - INFO - Epoch 90/200:
+Epoch 90/200:
+2026-06-25 09:47:27,417 - INFO - Train loss: 0.0908 (94.5s)
+Train loss: 0.0908 (94.5s)
+2026-06-25 09:47:50,532 - INFO - Test instance 0.5976, class 0.4675
+Test instance 0.5976, class 0.4675
+2026-06-25 09:47:50,533 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 09:47:50,557 - INFO - Epoch 91/200:
+Epoch 91/200:
+2026-06-25 09:49:25,196 - INFO - Train loss: 0.0910 (94.6s)
+Train loss: 0.0910 (94.6s)
+2026-06-25 09:49:48,190 - INFO - Test instance 0.6078, class 0.4765
+Test instance 0.6078, class 0.4765
+2026-06-25 09:49:48,190 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 09:49:48,216 - INFO - Epoch 92/200:
+Epoch 92/200:
+2026-06-25 09:51:23,124 - INFO - Train loss: 0.0895 (94.9s)
+Train loss: 0.0895 (94.9s)
+2026-06-25 09:51:46,122 - INFO - Test instance 0.6009, class 0.4672
+Test instance 0.6009, class 0.4672
+2026-06-25 09:51:46,122 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 09:51:46,167 - INFO - Epoch 93/200:
+Epoch 93/200:
+2026-06-25 09:53:20,210 - INFO - Train loss: 0.0915 (94.0s)
+Train loss: 0.0915 (94.0s)
+2026-06-25 09:53:43,034 - INFO - Test instance 0.5960, class 0.4652
+Test instance 0.5960, class 0.4652
+2026-06-25 09:53:43,035 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 09:53:43,060 - INFO - Epoch 94/200:
+Epoch 94/200:
+2026-06-25 09:55:17,150 - INFO - Train loss: 0.0908 (94.1s)
+Train loss: 0.0908 (94.1s)
+2026-06-25 09:55:40,224 - INFO - Test instance 0.6049, class 0.4758
+Test instance 0.6049, class 0.4758
+2026-06-25 09:55:40,224 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 09:55:40,249 - INFO - Epoch 95/200:
+Epoch 95/200:
+2026-06-25 09:57:14,053 - INFO - Train loss: 0.0905 (93.8s)
+Train loss: 0.0905 (93.8s)
+2026-06-25 09:57:37,008 - INFO - Test instance 0.6033, class 0.4685
+Test instance 0.6033, class 0.4685
+2026-06-25 09:57:37,009 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 09:57:37,035 - INFO - Epoch 96/200:
+Epoch 96/200:
+2026-06-25 09:59:11,289 - INFO - Train loss: 0.0907 (94.3s)
+Train loss: 0.0907 (94.3s)
+2026-06-25 09:59:34,205 - INFO - Test instance 0.6070, class 0.4678
+Test instance 0.6070, class 0.4678
+2026-06-25 09:59:34,206 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 09:59:34,231 - INFO - Epoch 97/200:
+Epoch 97/200:
+2026-06-25 10:01:08,012 - INFO - Train loss: 0.0897 (93.8s)
+Train loss: 0.0897 (93.8s)
+2026-06-25 10:01:30,851 - INFO - Test instance 0.6033, class 0.4811
+Test instance 0.6033, class 0.4811
+2026-06-25 10:01:30,851 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 10:01:30,879 - INFO - Epoch 98/200:
+Epoch 98/200:
+2026-06-25 10:03:04,919 - INFO - Train loss: 0.0900 (94.0s)
+Train loss: 0.0900 (94.0s)
+2026-06-25 10:03:27,941 - INFO - Test instance 0.6090, class 0.4733
+Test instance 0.6090, class 0.4733
+2026-06-25 10:03:27,941 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 10:03:27,966 - INFO - Epoch 99/200:
+Epoch 99/200:
+2026-06-25 10:05:01,831 - INFO - Train loss: 0.0906 (93.9s)
+Train loss: 0.0906 (93.9s)
+2026-06-25 10:05:24,779 - INFO - Test instance 0.6066, class 0.4786
+Test instance 0.6066, class 0.4786
+2026-06-25 10:05:24,779 - INFO - Best instance 0.6203, class 0.4862 (epoch 88)
+Best instance 0.6203, class 0.4862 (epoch 88)
+2026-06-25 10:05:24,806 - INFO - Epoch 100/200:
+Epoch 100/200:
+2026-06-25 10:06:59,038 - INFO - Train loss: 0.0910 (94.2s)
+Train loss: 0.0910 (94.2s)
+2026-06-25 10:07:22,295 - INFO - Test instance 0.6236, class 0.4918
+Test instance 0.6236, class 0.4918
+2026-06-25 10:07:22,318 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:07:22,344 - INFO - Epoch 101/200:
+Epoch 101/200:
+2026-06-25 10:08:56,377 - INFO - Train loss: 0.0888 (94.0s)
+Train loss: 0.0888 (94.0s)
+2026-06-25 10:09:19,475 - INFO - Test instance 0.6001, class 0.4696
+Test instance 0.6001, class 0.4696
+2026-06-25 10:09:19,476 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:09:19,501 - INFO - Epoch 102/200:
+Epoch 102/200:
+2026-06-25 10:10:53,341 - INFO - Train loss: 0.0879 (93.8s)
+Train loss: 0.0879 (93.8s)
+2026-06-25 10:11:16,351 - INFO - Test instance 0.6058, class 0.4791
+Test instance 0.6058, class 0.4791
+2026-06-25 10:11:16,352 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:11:16,376 - INFO - Epoch 103/200:
+Epoch 103/200:
+2026-06-25 10:12:50,340 - INFO - Train loss: 0.0870 (94.0s)
+Train loss: 0.0870 (94.0s)
+2026-06-25 10:13:13,330 - INFO - Test instance 0.6135, class 0.4891
+Test instance 0.6135, class 0.4891
+2026-06-25 10:13:13,330 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:13:13,355 - INFO - Epoch 104/200:
+Epoch 104/200:
+2026-06-25 10:14:46,853 - INFO - Train loss: 0.0882 (93.5s)
+Train loss: 0.0882 (93.5s)
+2026-06-25 10:15:09,891 - INFO - Test instance 0.5956, class 0.4729
+Test instance 0.5956, class 0.4729
+2026-06-25 10:15:09,893 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:15:09,918 - INFO - Epoch 105/200:
+Epoch 105/200:
+2026-06-25 10:16:43,871 - INFO - Train loss: 0.0879 (94.0s)
+Train loss: 0.0879 (94.0s)
+2026-06-25 10:17:06,964 - INFO - Test instance 0.6102, class 0.4834
+Test instance 0.6102, class 0.4834
+2026-06-25 10:17:06,965 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:17:06,989 - INFO - Epoch 106/200:
+Epoch 106/200:
+2026-06-25 10:18:41,275 - INFO - Train loss: 0.0889 (94.3s)
+Train loss: 0.0889 (94.3s)
+2026-06-25 10:19:04,296 - INFO - Test instance 0.6130, class 0.4830
+Test instance 0.6130, class 0.4830
+2026-06-25 10:19:04,297 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:19:04,321 - INFO - Epoch 107/200:
+Epoch 107/200:
+2026-06-25 10:20:38,383 - INFO - Train loss: 0.0893 (94.1s)
+Train loss: 0.0893 (94.1s)
+2026-06-25 10:21:01,295 - INFO - Test instance 0.6159, class 0.4860
+Test instance 0.6159, class 0.4860
+2026-06-25 10:21:01,295 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:21:01,321 - INFO - Epoch 108/200:
+Epoch 108/200:
+2026-06-25 10:22:35,739 - INFO - Train loss: 0.0895 (94.4s)
+Train loss: 0.0895 (94.4s)
+2026-06-25 10:22:58,728 - INFO - Test instance 0.5936, class 0.4700
+Test instance 0.5936, class 0.4700
+2026-06-25 10:22:58,728 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:22:58,780 - INFO - Epoch 109/200:
+Epoch 109/200:
+2026-06-25 10:24:33,296 - INFO - Train loss: 0.0885 (94.5s)
+Train loss: 0.0885 (94.5s)
+2026-06-25 10:24:56,332 - INFO - Test instance 0.6049, class 0.4762
+Test instance 0.6049, class 0.4762
+2026-06-25 10:24:56,333 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:24:56,358 - INFO - Epoch 110/200:
+Epoch 110/200:
+2026-06-25 10:26:30,640 - INFO - Train loss: 0.0891 (94.3s)
+Train loss: 0.0891 (94.3s)
+2026-06-25 10:26:53,640 - INFO - Test instance 0.6195, class 0.4851
+Test instance 0.6195, class 0.4851
+2026-06-25 10:26:53,640 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:26:53,665 - INFO - Epoch 111/200:
+Epoch 111/200:
+2026-06-25 10:28:27,456 - INFO - Train loss: 0.0893 (93.8s)
+Train loss: 0.0893 (93.8s)
+2026-06-25 10:28:50,553 - INFO - Test instance 0.6122, class 0.4792
+Test instance 0.6122, class 0.4792
+2026-06-25 10:28:50,553 - INFO - Best instance 0.6236, class 0.4918 (epoch 100)
+Best instance 0.6236, class 0.4918 (epoch 100)
+2026-06-25 10:28:50,579 - INFO - Epoch 112/200:
+Epoch 112/200:
+2026-06-25 10:30:24,781 - INFO - Train loss: 0.0886 (94.2s)
+Train loss: 0.0886 (94.2s)
+2026-06-25 10:30:47,693 - INFO - Test instance 0.6244, class 0.4887
+Test instance 0.6244, class 0.4887
+2026-06-25 10:30:47,715 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:30:47,737 - INFO - Epoch 113/200:
+Epoch 113/200:
+2026-06-25 10:32:21,335 - INFO - Train loss: 0.0878 (93.6s)
+Train loss: 0.0878 (93.6s)
+2026-06-25 10:32:44,214 - INFO - Test instance 0.6098, class 0.4762
+Test instance 0.6098, class 0.4762
+2026-06-25 10:32:44,214 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:32:44,242 - INFO - Epoch 114/200:
+Epoch 114/200:
+2026-06-25 10:34:18,302 - INFO - Train loss: 0.0886 (94.1s)
+Train loss: 0.0886 (94.1s)
+2026-06-25 10:34:41,324 - INFO - Test instance 0.5956, class 0.4700
+Test instance 0.5956, class 0.4700
+2026-06-25 10:34:41,325 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:34:41,350 - INFO - Epoch 115/200:
+Epoch 115/200:
+2026-06-25 10:36:15,825 - INFO - Train loss: 0.0885 (94.5s)
+Train loss: 0.0885 (94.5s)
+2026-06-25 10:36:38,938 - INFO - Test instance 0.6066, class 0.4762
+Test instance 0.6066, class 0.4762
+2026-06-25 10:36:38,939 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:36:38,965 - INFO - Epoch 116/200:
+Epoch 116/200:
+2026-06-25 10:38:13,347 - INFO - Train loss: 0.0877 (94.4s)
+Train loss: 0.0877 (94.4s)
+2026-06-25 10:38:36,428 - INFO - Test instance 0.6094, class 0.4815
+Test instance 0.6094, class 0.4815
+2026-06-25 10:38:36,428 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:38:36,452 - INFO - Epoch 117/200:
+Epoch 117/200:
+2026-06-25 10:40:10,592 - INFO - Train loss: 0.0896 (94.1s)
+Train loss: 0.0896 (94.1s)
+2026-06-25 10:40:33,479 - INFO - Test instance 0.6126, class 0.4813
+Test instance 0.6126, class 0.4813
+2026-06-25 10:40:33,479 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:40:33,503 - INFO - Epoch 118/200:
+Epoch 118/200:
+2026-06-25 10:42:07,751 - INFO - Train loss: 0.0882 (94.2s)
+Train loss: 0.0882 (94.2s)
+2026-06-25 10:42:30,656 - INFO - Test instance 0.6078, class 0.4728
+Test instance 0.6078, class 0.4728
+2026-06-25 10:42:30,656 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:42:30,681 - INFO - Epoch 119/200:
+Epoch 119/200:
+2026-06-25 10:44:04,934 - INFO - Train loss: 0.0882 (94.3s)
+Train loss: 0.0882 (94.3s)
+2026-06-25 10:44:27,943 - INFO - Test instance 0.6130, class 0.4864
+Test instance 0.6130, class 0.4864
+2026-06-25 10:44:27,943 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:44:27,968 - INFO - Epoch 120/200:
+Epoch 120/200:
+2026-06-25 10:46:01,830 - INFO - Train loss: 0.0882 (93.9s)
+Train loss: 0.0882 (93.9s)
+2026-06-25 10:46:24,801 - INFO - Test instance 0.5981, class 0.4686
+Test instance 0.5981, class 0.4686
+2026-06-25 10:46:24,801 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:46:24,826 - INFO - Epoch 121/200:
+Epoch 121/200:
+2026-06-25 10:47:59,321 - INFO - Train loss: 0.0877 (94.5s)
+Train loss: 0.0877 (94.5s)
+2026-06-25 10:48:22,283 - INFO - Test instance 0.5908, class 0.4598
+Test instance 0.5908, class 0.4598
+2026-06-25 10:48:22,283 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:48:22,308 - INFO - Epoch 122/200:
+Epoch 122/200:
+2026-06-25 10:49:56,843 - INFO - Train loss: 0.0879 (94.5s)
+Train loss: 0.0879 (94.5s)
+2026-06-25 10:50:19,835 - INFO - Test instance 0.6102, class 0.4796
+Test instance 0.6102, class 0.4796
+2026-06-25 10:50:19,835 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:50:19,861 - INFO - Epoch 123/200:
+Epoch 123/200:
+2026-06-25 10:51:53,741 - INFO - Train loss: 0.0863 (93.9s)
+Train loss: 0.0863 (93.9s)
+2026-06-25 10:52:16,834 - INFO - Test instance 0.5997, class 0.4659
+Test instance 0.5997, class 0.4659
+2026-06-25 10:52:16,834 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:52:16,859 - INFO - Epoch 124/200:
+Epoch 124/200:
+2026-06-25 10:53:51,134 - INFO - Train loss: 0.0879 (94.3s)
+Train loss: 0.0879 (94.3s)
+2026-06-25 10:54:14,217 - INFO - Test instance 0.5968, class 0.4587
+Test instance 0.5968, class 0.4587
+2026-06-25 10:54:14,217 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:54:14,245 - INFO - Epoch 125/200:
+Epoch 125/200:
+2026-06-25 10:55:48,613 - INFO - Train loss: 0.0862 (94.4s)
+Train loss: 0.0862 (94.4s)
+2026-06-25 10:56:11,561 - INFO - Test instance 0.6130, class 0.4864
+Test instance 0.6130, class 0.4864
+2026-06-25 10:56:11,562 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:56:11,586 - INFO - Epoch 126/200:
+Epoch 126/200:
+2026-06-25 10:57:45,848 - INFO - Train loss: 0.0872 (94.3s)
+Train loss: 0.0872 (94.3s)
+2026-06-25 10:58:08,673 - INFO - Test instance 0.6106, class 0.4803
+Test instance 0.6106, class 0.4803
+2026-06-25 10:58:08,675 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 10:58:08,699 - INFO - Epoch 127/200:
+Epoch 127/200:
+2026-06-25 10:59:42,593 - INFO - Train loss: 0.0864 (93.9s)
+Train loss: 0.0864 (93.9s)
+2026-06-25 11:00:05,679 - INFO - Test instance 0.6118, class 0.4835
+Test instance 0.6118, class 0.4835
+2026-06-25 11:00:05,680 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:00:05,704 - INFO - Epoch 128/200:
+Epoch 128/200:
+2026-06-25 11:01:40,111 - INFO - Train loss: 0.0875 (94.4s)
+Train loss: 0.0875 (94.4s)
+2026-06-25 11:02:03,152 - INFO - Test instance 0.6082, class 0.4788
+Test instance 0.6082, class 0.4788
+2026-06-25 11:02:03,152 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:02:03,177 - INFO - Epoch 129/200:
+Epoch 129/200:
+2026-06-25 11:03:37,212 - INFO - Train loss: 0.0873 (94.0s)
+Train loss: 0.0873 (94.0s)
+2026-06-25 11:04:00,086 - INFO - Test instance 0.6191, class 0.4845
+Test instance 0.6191, class 0.4845
+2026-06-25 11:04:00,086 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:04:00,112 - INFO - Epoch 130/200:
+Epoch 130/200:
+2026-06-25 11:05:33,791 - INFO - Train loss: 0.0869 (93.7s)
+Train loss: 0.0869 (93.7s)
+2026-06-25 11:05:56,844 - INFO - Test instance 0.5997, class 0.4749
+Test instance 0.5997, class 0.4749
+2026-06-25 11:05:56,845 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:05:56,871 - INFO - Epoch 131/200:
+Epoch 131/200:
+2026-06-25 11:07:31,503 - INFO - Train loss: 0.0870 (94.6s)
+Train loss: 0.0870 (94.6s)
+2026-06-25 11:07:54,339 - INFO - Test instance 0.6078, class 0.4760
+Test instance 0.6078, class 0.4760
+2026-06-25 11:07:54,339 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:07:54,367 - INFO - Epoch 132/200:
+Epoch 132/200:
+2026-06-25 11:09:28,533 - INFO - Train loss: 0.0857 (94.2s)
+Train loss: 0.0857 (94.2s)
+2026-06-25 11:09:51,496 - INFO - Test instance 0.6102, class 0.4841
+Test instance 0.6102, class 0.4841
+2026-06-25 11:09:51,497 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:09:51,526 - INFO - Epoch 133/200:
+Epoch 133/200:
+2026-06-25 11:11:25,478 - INFO - Train loss: 0.0879 (94.0s)
+Train loss: 0.0879 (94.0s)
+2026-06-25 11:11:48,428 - INFO - Test instance 0.6062, class 0.4800
+Test instance 0.6062, class 0.4800
+2026-06-25 11:11:48,429 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:11:48,458 - INFO - Epoch 134/200:
+Epoch 134/200:
+2026-06-25 11:13:22,691 - INFO - Train loss: 0.0865 (94.2s)
+Train loss: 0.0865 (94.2s)
+2026-06-25 11:13:45,657 - INFO - Test instance 0.6086, class 0.4787
+Test instance 0.6086, class 0.4787
+2026-06-25 11:13:45,657 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:13:45,682 - INFO - Epoch 135/200:
+Epoch 135/200:
+2026-06-25 11:15:19,584 - INFO - Train loss: 0.0862 (93.9s)
+Train loss: 0.0862 (93.9s)
+2026-06-25 11:15:42,502 - INFO - Test instance 0.6029, class 0.4676
+Test instance 0.6029, class 0.4676
+2026-06-25 11:15:42,502 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:15:42,529 - INFO - Epoch 136/200:
+Epoch 136/200:
+2026-06-25 11:17:16,247 - INFO - Train loss: 0.0874 (93.7s)
+Train loss: 0.0874 (93.7s)
+2026-06-25 11:17:39,168 - INFO - Test instance 0.6122, class 0.4781
+Test instance 0.6122, class 0.4781
+2026-06-25 11:17:39,169 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:17:39,196 - INFO - Epoch 137/200:
+Epoch 137/200:
+2026-06-25 11:19:13,153 - INFO - Train loss: 0.0872 (94.0s)
+Train loss: 0.0872 (94.0s)
+2026-06-25 11:19:36,267 - INFO - Test instance 0.6151, class 0.4902
+Test instance 0.6151, class 0.4902
+2026-06-25 11:19:36,267 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:19:36,291 - INFO - Epoch 138/200:
+Epoch 138/200:
+2026-06-25 11:21:10,477 - INFO - Train loss: 0.0879 (94.2s)
+Train loss: 0.0879 (94.2s)
+2026-06-25 11:21:33,544 - INFO - Test instance 0.6041, class 0.4680
+Test instance 0.6041, class 0.4680
+2026-06-25 11:21:33,544 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:21:33,569 - INFO - Epoch 139/200:
+Epoch 139/200:
+2026-06-25 11:23:07,600 - INFO - Train loss: 0.0875 (94.0s)
+Train loss: 0.0875 (94.0s)
+2026-06-25 11:23:30,487 - INFO - Test instance 0.6045, class 0.4746
+Test instance 0.6045, class 0.4746
+2026-06-25 11:23:30,487 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:23:30,513 - INFO - Epoch 140/200:
+Epoch 140/200:
+2026-06-25 11:25:04,614 - INFO - Train loss: 0.0870 (94.1s)
+Train loss: 0.0870 (94.1s)
+2026-06-25 11:25:27,437 - INFO - Test instance 0.6187, class 0.4835
+Test instance 0.6187, class 0.4835
+2026-06-25 11:25:27,437 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:25:27,463 - INFO - Epoch 141/200:
+Epoch 141/200:
+2026-06-25 11:27:01,552 - INFO - Train loss: 0.0874 (94.1s)
+Train loss: 0.0874 (94.1s)
+2026-06-25 11:27:24,708 - INFO - Test instance 0.6090, class 0.4779
+Test instance 0.6090, class 0.4779
+2026-06-25 11:27:24,708 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:27:24,732 - INFO - Epoch 142/200:
+Epoch 142/200:
+2026-06-25 11:28:59,096 - INFO - Train loss: 0.0856 (94.4s)
+Train loss: 0.0856 (94.4s)
+2026-06-25 11:29:22,101 - INFO - Test instance 0.6155, class 0.4843
+Test instance 0.6155, class 0.4843
+2026-06-25 11:29:22,101 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:29:22,128 - INFO - Epoch 143/200:
+Epoch 143/200:
+2026-06-25 11:30:55,644 - INFO - Train loss: 0.0849 (93.5s)
+Train loss: 0.0849 (93.5s)
+2026-06-25 11:31:18,581 - INFO - Test instance 0.6074, class 0.4757
+Test instance 0.6074, class 0.4757
+2026-06-25 11:31:18,581 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:31:18,608 - INFO - Epoch 144/200:
+Epoch 144/200:
+2026-06-25 11:32:52,326 - INFO - Train loss: 0.0864 (93.7s)
+Train loss: 0.0864 (93.7s)
+2026-06-25 11:33:15,276 - INFO - Test instance 0.6041, class 0.4743
+Test instance 0.6041, class 0.4743
+2026-06-25 11:33:15,276 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:33:15,303 - INFO - Epoch 145/200:
+Epoch 145/200:
+2026-06-25 11:34:49,455 - INFO - Train loss: 0.0858 (94.2s)
+Train loss: 0.0858 (94.2s)
+2026-06-25 11:35:12,548 - INFO - Test instance 0.6171, class 0.4882
+Test instance 0.6171, class 0.4882
+2026-06-25 11:35:12,548 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:35:12,592 - INFO - Epoch 146/200:
+Epoch 146/200:
+2026-06-25 11:36:46,520 - INFO - Train loss: 0.0859 (93.9s)
+Train loss: 0.0859 (93.9s)
+2026-06-25 11:37:09,482 - INFO - Test instance 0.6102, class 0.4778
+Test instance 0.6102, class 0.4778
+2026-06-25 11:37:09,482 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:37:09,506 - INFO - Epoch 147/200:
+Epoch 147/200:
+2026-06-25 11:38:43,436 - INFO - Train loss: 0.0863 (93.9s)
+Train loss: 0.0863 (93.9s)
+2026-06-25 11:39:06,559 - INFO - Test instance 0.6191, class 0.4876
+Test instance 0.6191, class 0.4876
+2026-06-25 11:39:06,561 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:39:06,596 - INFO - Epoch 148/200:
+Epoch 148/200:
+2026-06-25 11:40:40,730 - INFO - Train loss: 0.0861 (94.1s)
+Train loss: 0.0861 (94.1s)
+2026-06-25 11:41:03,704 - INFO - Test instance 0.6130, class 0.4791
+Test instance 0.6130, class 0.4791
+2026-06-25 11:41:03,704 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:41:03,729 - INFO - Epoch 149/200:
+Epoch 149/200:
+2026-06-25 11:42:37,610 - INFO - Train loss: 0.0859 (93.9s)
+Train loss: 0.0859 (93.9s)
+2026-06-25 11:43:00,644 - INFO - Test instance 0.6216, class 0.4887
+Test instance 0.6216, class 0.4887
+2026-06-25 11:43:00,644 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:43:00,670 - INFO - Epoch 150/200:
+Epoch 150/200:
+2026-06-25 11:44:34,960 - INFO - Train loss: 0.0843 (94.3s)
+Train loss: 0.0843 (94.3s)
+2026-06-25 11:44:57,942 - INFO - Test instance 0.6183, class 0.4860
+Test instance 0.6183, class 0.4860
+2026-06-25 11:44:57,942 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:44:57,966 - INFO - Epoch 151/200:
+Epoch 151/200:
+2026-06-25 11:46:31,722 - INFO - Train loss: 0.0871 (93.8s)
+Train loss: 0.0871 (93.8s)
+2026-06-25 11:46:54,824 - INFO - Test instance 0.6126, class 0.4845
+Test instance 0.6126, class 0.4845
+2026-06-25 11:46:54,826 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:46:54,851 - INFO - Epoch 152/200:
+Epoch 152/200:
+2026-06-25 11:48:28,593 - INFO - Train loss: 0.0859 (93.7s)
+Train loss: 0.0859 (93.7s)
+2026-06-25 11:48:51,573 - INFO - Test instance 0.6090, class 0.4797
+Test instance 0.6090, class 0.4797
+2026-06-25 11:48:51,574 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:48:51,599 - INFO - Epoch 153/200:
+Epoch 153/200:
+2026-06-25 11:50:25,641 - INFO - Train loss: 0.0870 (94.0s)
+Train loss: 0.0870 (94.0s)
+2026-06-25 11:50:49,382 - INFO - Test instance 0.6240, class 0.4882
+Test instance 0.6240, class 0.4882
+2026-06-25 11:50:49,382 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:50:49,410 - INFO - Epoch 154/200:
+Epoch 154/200:
+2026-06-25 11:52:23,266 - INFO - Train loss: 0.0856 (93.9s)
+Train loss: 0.0856 (93.9s)
+2026-06-25 11:52:46,452 - INFO - Test instance 0.6232, class 0.4906
+Test instance 0.6232, class 0.4906
+2026-06-25 11:52:46,452 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:52:46,478 - INFO - Epoch 155/200:
+Epoch 155/200:
+2026-06-25 11:54:20,576 - INFO - Train loss: 0.0866 (94.1s)
+Train loss: 0.0866 (94.1s)
+2026-06-25 11:54:43,843 - INFO - Test instance 0.6098, class 0.4736
+Test instance 0.6098, class 0.4736
+2026-06-25 11:54:43,843 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:54:43,868 - INFO - Epoch 156/200:
+Epoch 156/200:
+2026-06-25 11:56:17,876 - INFO - Train loss: 0.0871 (94.0s)
+Train loss: 0.0871 (94.0s)
+2026-06-25 11:56:40,799 - INFO - Test instance 0.6175, class 0.4848
+Test instance 0.6175, class 0.4848
+2026-06-25 11:56:40,799 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:56:40,825 - INFO - Epoch 157/200:
+Epoch 157/200:
+2026-06-25 11:58:15,319 - INFO - Train loss: 0.0853 (94.5s)
+Train loss: 0.0853 (94.5s)
+2026-06-25 11:58:38,329 - INFO - Test instance 0.6143, class 0.4828
+Test instance 0.6143, class 0.4828
+2026-06-25 11:58:38,329 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 11:58:38,354 - INFO - Epoch 158/200:
+Epoch 158/200:
+2026-06-25 12:00:12,868 - INFO - Train loss: 0.0853 (94.5s)
+Train loss: 0.0853 (94.5s)
+2026-06-25 12:00:36,033 - INFO - Test instance 0.6195, class 0.4922
+Test instance 0.6195, class 0.4922
+2026-06-25 12:00:36,034 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:00:36,059 - INFO - Epoch 159/200:
+Epoch 159/200:
+2026-06-25 12:02:10,485 - INFO - Train loss: 0.0854 (94.4s)
+Train loss: 0.0854 (94.4s)
+2026-06-25 12:02:33,558 - INFO - Test instance 0.6167, class 0.4839
+Test instance 0.6167, class 0.4839
+2026-06-25 12:02:33,558 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:02:33,582 - INFO - Epoch 160/200:
+Epoch 160/200:
+2026-06-25 12:04:07,858 - INFO - Train loss: 0.0861 (94.3s)
+Train loss: 0.0861 (94.3s)
+2026-06-25 12:04:30,984 - INFO - Test instance 0.6135, class 0.4827
+Test instance 0.6135, class 0.4827
+2026-06-25 12:04:30,985 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:04:31,010 - INFO - Epoch 161/200:
+Epoch 161/200:
+2026-06-25 12:06:05,144 - INFO - Train loss: 0.0842 (94.1s)
+Train loss: 0.0842 (94.1s)
+2026-06-25 12:06:27,998 - INFO - Test instance 0.6098, class 0.4835
+Test instance 0.6098, class 0.4835
+2026-06-25 12:06:27,999 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:06:28,028 - INFO - Epoch 162/200:
+Epoch 162/200:
+2026-06-25 12:08:01,861 - INFO - Train loss: 0.0856 (93.8s)
+Train loss: 0.0856 (93.8s)
+2026-06-25 12:08:24,866 - INFO - Test instance 0.6199, class 0.4912
+Test instance 0.6199, class 0.4912
+2026-06-25 12:08:24,866 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:08:24,891 - INFO - Epoch 163/200:
+Epoch 163/200:
+2026-06-25 12:09:59,268 - INFO - Train loss: 0.0855 (94.4s)
+Train loss: 0.0855 (94.4s)
+2026-06-25 12:10:22,269 - INFO - Test instance 0.6155, class 0.4828
+Test instance 0.6155, class 0.4828
+2026-06-25 12:10:22,269 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:10:22,293 - INFO - Epoch 164/200:
+Epoch 164/200:
+2026-06-25 12:11:56,083 - INFO - Train loss: 0.0849 (93.8s)
+Train loss: 0.0849 (93.8s)
+2026-06-25 12:12:19,222 - INFO - Test instance 0.6122, class 0.4822
+Test instance 0.6122, class 0.4822
+2026-06-25 12:12:19,222 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:12:19,247 - INFO - Epoch 165/200:
+Epoch 165/200:
+2026-06-25 12:13:53,118 - INFO - Train loss: 0.0838 (93.9s)
+Train loss: 0.0838 (93.9s)
+2026-06-25 12:14:16,027 - INFO - Test instance 0.6183, class 0.4895
+Test instance 0.6183, class 0.4895
+2026-06-25 12:14:16,027 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:14:16,051 - INFO - Epoch 166/200:
+Epoch 166/200:
+2026-06-25 12:15:50,125 - INFO - Train loss: 0.0853 (94.1s)
+Train loss: 0.0853 (94.1s)
+2026-06-25 12:16:13,113 - INFO - Test instance 0.6086, class 0.4790
+Test instance 0.6086, class 0.4790
+2026-06-25 12:16:13,114 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:16:13,140 - INFO - Epoch 167/200:
+Epoch 167/200:
+2026-06-25 12:17:47,560 - INFO - Train loss: 0.0853 (94.4s)
+Train loss: 0.0853 (94.4s)
+2026-06-25 12:18:10,607 - INFO - Test instance 0.6244, class 0.4912
+Test instance 0.6244, class 0.4912
+2026-06-25 12:18:10,607 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:18:10,632 - INFO - Epoch 168/200:
+Epoch 168/200:
+2026-06-25 12:19:44,829 - INFO - Train loss: 0.0852 (94.2s)
+Train loss: 0.0852 (94.2s)
+2026-06-25 12:20:08,043 - INFO - Test instance 0.6167, class 0.4902
+Test instance 0.6167, class 0.4902
+2026-06-25 12:20:08,043 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:20:08,067 - INFO - Epoch 169/200:
+Epoch 169/200:
+2026-06-25 12:21:42,371 - INFO - Train loss: 0.0843 (94.3s)
+Train loss: 0.0843 (94.3s)
+2026-06-25 12:22:05,262 - INFO - Test instance 0.6074, class 0.4786
+Test instance 0.6074, class 0.4786
+2026-06-25 12:22:05,263 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:22:05,287 - INFO - Epoch 170/200:
+Epoch 170/200:
+2026-06-25 12:23:39,255 - INFO - Train loss: 0.0857 (94.0s)
+Train loss: 0.0857 (94.0s)
+2026-06-25 12:24:02,154 - INFO - Test instance 0.6199, class 0.4863
+Test instance 0.6199, class 0.4863
+2026-06-25 12:24:02,155 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:24:02,180 - INFO - Epoch 171/200:
+Epoch 171/200:
+2026-06-25 12:25:36,255 - INFO - Train loss: 0.0858 (94.1s)
+Train loss: 0.0858 (94.1s)
+2026-06-25 12:25:59,124 - INFO - Test instance 0.6009, class 0.4705
+Test instance 0.6009, class 0.4705
+2026-06-25 12:25:59,125 - INFO - Best instance 0.6244, class 0.4887 (epoch 112)
+Best instance 0.6244, class 0.4887 (epoch 112)
+2026-06-25 12:25:59,149 - INFO - Epoch 172/200:
+Epoch 172/200:
+2026-06-25 12:27:33,062 - INFO - Train loss: 0.0863 (93.9s)
+Train loss: 0.0863 (93.9s)
+2026-06-25 12:27:56,005 - INFO - Test instance 0.6248, class 0.4921
+Test instance 0.6248, class 0.4921
+2026-06-25 12:27:56,029 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:27:56,052 - INFO - Epoch 173/200:
+Epoch 173/200:
+2026-06-25 12:29:29,892 - INFO - Train loss: 0.0843 (93.8s)
+Train loss: 0.0843 (93.8s)
+2026-06-25 12:29:52,951 - INFO - Test instance 0.6143, class 0.4845
+Test instance 0.6143, class 0.4845
+2026-06-25 12:29:52,951 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:29:52,977 - INFO - Epoch 174/200:
+Epoch 174/200:
+2026-06-25 12:31:27,072 - INFO - Train loss: 0.0839 (94.1s)
+Train loss: 0.0839 (94.1s)
+2026-06-25 12:31:49,813 - INFO - Test instance 0.6220, class 0.4931
+Test instance 0.6220, class 0.4931
+2026-06-25 12:31:49,813 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:31:49,838 - INFO - Epoch 175/200:
+Epoch 175/200:
+2026-06-25 12:33:23,963 - INFO - Train loss: 0.0862 (94.1s)
+Train loss: 0.0862 (94.1s)
+2026-06-25 12:33:46,903 - INFO - Test instance 0.6082, class 0.4782
+Test instance 0.6082, class 0.4782
+2026-06-25 12:33:46,903 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:33:46,929 - INFO - Epoch 176/200:
+Epoch 176/200:
+2026-06-25 12:35:21,246 - INFO - Train loss: 0.0855 (94.3s)
+Train loss: 0.0855 (94.3s)
+2026-06-25 12:35:44,277 - INFO - Test instance 0.6187, class 0.4877
+Test instance 0.6187, class 0.4877
+2026-06-25 12:35:44,280 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:35:44,304 - INFO - Epoch 177/200:
+Epoch 177/200:
+2026-06-25 12:37:18,238 - INFO - Train loss: 0.0848 (93.9s)
+Train loss: 0.0848 (93.9s)
+2026-06-25 12:37:41,191 - INFO - Test instance 0.6159, class 0.4867
+Test instance 0.6159, class 0.4867
+2026-06-25 12:37:41,191 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:37:41,216 - INFO - Epoch 178/200:
+Epoch 178/200:
+2026-06-25 12:39:15,404 - INFO - Train loss: 0.0847 (94.2s)
+Train loss: 0.0847 (94.2s)
+2026-06-25 12:39:38,309 - INFO - Test instance 0.6240, class 0.4920
+Test instance 0.6240, class 0.4920
+2026-06-25 12:39:38,309 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:39:38,336 - INFO - Epoch 179/200:
+Epoch 179/200:
+2026-06-25 12:41:12,018 - INFO - Train loss: 0.0849 (93.7s)
+Train loss: 0.0849 (93.7s)
+2026-06-25 12:41:35,229 - INFO - Test instance 0.6106, class 0.4787
+Test instance 0.6106, class 0.4787
+2026-06-25 12:41:35,230 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:41:35,258 - INFO - Epoch 180/200:
+Epoch 180/200:
+2026-06-25 12:43:09,105 - INFO - Train loss: 0.0849 (93.8s)
+Train loss: 0.0849 (93.8s)
+2026-06-25 12:43:32,049 - INFO - Test instance 0.6199, class 0.4892
+Test instance 0.6199, class 0.4892
+2026-06-25 12:43:32,049 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:43:32,074 - INFO - Epoch 181/200:
+Epoch 181/200:
+2026-06-25 12:45:05,809 - INFO - Train loss: 0.0847 (93.7s)
+Train loss: 0.0847 (93.7s)
+2026-06-25 12:45:28,815 - INFO - Test instance 0.6175, class 0.4828
+Test instance 0.6175, class 0.4828
+2026-06-25 12:45:28,815 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:45:28,840 - INFO - Epoch 182/200:
+Epoch 182/200:
+2026-06-25 12:47:02,601 - INFO - Train loss: 0.0852 (93.8s)
+Train loss: 0.0852 (93.8s)
+2026-06-25 12:47:25,423 - INFO - Test instance 0.6228, class 0.4881
+Test instance 0.6228, class 0.4881
+2026-06-25 12:47:25,423 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:47:25,448 - INFO - Epoch 183/200:
+Epoch 183/200:
+2026-06-25 12:48:59,466 - INFO - Train loss: 0.0830 (94.0s)
+Train loss: 0.0830 (94.0s)
+2026-06-25 12:49:22,559 - INFO - Test instance 0.6187, class 0.4875
+Test instance 0.6187, class 0.4875
+2026-06-25 12:49:22,559 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:49:22,585 - INFO - Epoch 184/200:
+Epoch 184/200:
+2026-06-25 12:50:56,686 - INFO - Train loss: 0.0854 (94.1s)
+Train loss: 0.0854 (94.1s)
+2026-06-25 12:51:20,010 - INFO - Test instance 0.6236, class 0.4897
+Test instance 0.6236, class 0.4897
+2026-06-25 12:51:20,010 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:51:20,037 - INFO - Epoch 185/200:
+Epoch 185/200:
+2026-06-25 12:52:54,733 - INFO - Train loss: 0.0844 (94.7s)
+Train loss: 0.0844 (94.7s)
+2026-06-25 12:53:17,595 - INFO - Test instance 0.6118, class 0.4791
+Test instance 0.6118, class 0.4791
+2026-06-25 12:53:17,596 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:53:17,620 - INFO - Epoch 186/200:
+Epoch 186/200:
+2026-06-25 12:54:51,846 - INFO - Train loss: 0.0841 (94.2s)
+Train loss: 0.0841 (94.2s)
+2026-06-25 12:55:14,993 - INFO - Test instance 0.6163, class 0.4861
+Test instance 0.6163, class 0.4861
+2026-06-25 12:55:14,993 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:55:15,018 - INFO - Epoch 187/200:
+Epoch 187/200:
+2026-06-25 12:56:48,961 - INFO - Train loss: 0.0853 (93.9s)
+Train loss: 0.0853 (93.9s)
+2026-06-25 12:57:12,068 - INFO - Test instance 0.6155, class 0.4865
+Test instance 0.6155, class 0.4865
+2026-06-25 12:57:12,069 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:57:12,093 - INFO - Epoch 188/200:
+Epoch 188/200:
+2026-06-25 12:58:46,338 - INFO - Train loss: 0.0832 (94.2s)
+Train loss: 0.0832 (94.2s)
+2026-06-25 12:59:09,278 - INFO - Test instance 0.6163, class 0.4840
+Test instance 0.6163, class 0.4840
+2026-06-25 12:59:09,278 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 12:59:09,303 - INFO - Epoch 189/200:
+Epoch 189/200:
+2026-06-25 13:00:43,538 - INFO - Train loss: 0.0838 (94.2s)
+Train loss: 0.0838 (94.2s)
+2026-06-25 13:01:06,481 - INFO - Test instance 0.6155, class 0.4834
+Test instance 0.6155, class 0.4834
+2026-06-25 13:01:06,481 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:01:06,506 - INFO - Epoch 190/200:
+Epoch 190/200:
+2026-06-25 13:02:40,429 - INFO - Train loss: 0.0852 (93.9s)
+Train loss: 0.0852 (93.9s)
+2026-06-25 13:03:03,462 - INFO - Test instance 0.6183, class 0.4843
+Test instance 0.6183, class 0.4843
+2026-06-25 13:03:03,463 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:03:03,491 - INFO - Epoch 191/200:
+Epoch 191/200:
+2026-06-25 13:04:37,382 - INFO - Train loss: 0.0829 (93.9s)
+Train loss: 0.0829 (93.9s)
+2026-06-25 13:05:00,341 - INFO - Test instance 0.6163, class 0.4829
+Test instance 0.6163, class 0.4829
+2026-06-25 13:05:00,341 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:05:00,365 - INFO - Epoch 192/200:
+Epoch 192/200:
+2026-06-25 13:06:34,151 - INFO - Train loss: 0.0851 (93.8s)
+Train loss: 0.0851 (93.8s)
+2026-06-25 13:06:57,086 - INFO - Test instance 0.6171, class 0.4884
+Test instance 0.6171, class 0.4884
+2026-06-25 13:06:57,086 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:06:57,110 - INFO - Epoch 193/200:
+Epoch 193/200:
+2026-06-25 13:08:31,045 - INFO - Train loss: 0.0856 (93.9s)
+Train loss: 0.0856 (93.9s)
+2026-06-25 13:08:54,065 - INFO - Test instance 0.6143, class 0.4847
+Test instance 0.6143, class 0.4847
+2026-06-25 13:08:54,065 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:08:54,089 - INFO - Epoch 194/200:
+Epoch 194/200:
+2026-06-25 13:10:27,810 - INFO - Train loss: 0.0841 (93.7s)
+Train loss: 0.0841 (93.7s)
+2026-06-25 13:10:50,667 - INFO - Test instance 0.6041, class 0.4717
+Test instance 0.6041, class 0.4717
+2026-06-25 13:10:50,668 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:10:50,691 - INFO - Epoch 195/200:
+Epoch 195/200:
+2026-06-25 13:12:24,738 - INFO - Train loss: 0.0836 (94.0s)
+Train loss: 0.0836 (94.0s)
+2026-06-25 13:12:47,786 - INFO - Test instance 0.6155, class 0.4816
+Test instance 0.6155, class 0.4816
+2026-06-25 13:12:47,786 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:12:47,810 - INFO - Epoch 196/200:
+Epoch 196/200:
+2026-06-25 13:14:21,880 - INFO - Train loss: 0.0837 (94.1s)
+Train loss: 0.0837 (94.1s)
+2026-06-25 13:14:44,983 - INFO - Test instance 0.6203, class 0.4902
+Test instance 0.6203, class 0.4902
+2026-06-25 13:14:44,984 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:14:45,009 - INFO - Epoch 197/200:
+Epoch 197/200:
+2026-06-25 13:16:18,736 - INFO - Train loss: 0.0854 (93.7s)
+Train loss: 0.0854 (93.7s)
+2026-06-25 13:16:41,576 - INFO - Test instance 0.6143, class 0.4831
+Test instance 0.6143, class 0.4831
+2026-06-25 13:16:41,576 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:16:41,599 - INFO - Epoch 198/200:
+Epoch 198/200:
+2026-06-25 13:18:15,876 - INFO - Train loss: 0.0841 (94.3s)
+Train loss: 0.0841 (94.3s)
+2026-06-25 13:18:38,857 - INFO - Test instance 0.6183, class 0.4859
+Test instance 0.6183, class 0.4859
+2026-06-25 13:18:38,857 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:18:38,885 - INFO - Epoch 199/200:
+Epoch 199/200:
+2026-06-25 13:20:12,943 - INFO - Train loss: 0.0850 (94.1s)
+Train loss: 0.0850 (94.1s)
+2026-06-25 13:20:36,007 - INFO - Test instance 0.6195, class 0.4843
+Test instance 0.6195, class 0.4843
+2026-06-25 13:20:36,007 - INFO - Best instance 0.6248, class 0.4921 (epoch 172)
+Best instance 0.6248, class 0.4921 (epoch 172)
+2026-06-25 13:20:36,033 - INFO - Epoch 200/200:
+Epoch 200/200:
+2026-06-25 13:22:09,865 - INFO - Train loss: 0.0841 (93.8s)
+Train loss: 0.0841 (93.8s)
+2026-06-25 13:22:32,853 - INFO - Test instance 0.6260, class 0.4969
+Test instance 0.6260, class 0.4969
+2026-06-25 13:22:32,876 - INFO - Best instance 0.6260, class 0.4969 (epoch 200)
+Best instance 0.6260, class 0.4969 (epoch 200)
+2026-06-25 13:23:13,075 - INFO - Student 1.44 MB, 121.21 ms
+Student 1.44 MB, 121.21 ms
