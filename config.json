@@ -1,0 +1,229 @@
+{
+  "$schema": "./config.schema.json",
+  "site": {
+    "title": "Benchmarking Federated Learning & Knowledge Distillation for Point Cloud Classification",
+    "venue": "ECCV 2026",
+    "description": "A multi-seed benchmark that jointly evaluates 13 federated learning algorithms and 10 knowledge distillation objectives for 3D point cloud classification across their full 130-pair cross-product, on ModelNet40 and a clinical craniosynostosis dataset, exposing an evaluation pitfall in combined FL+KD pipelines.",
+    "keywords": "Federated Learning, Knowledge Distillation, 3D Point Cloud, Model Compression, Non-IID Label Skew, PointNet++, ModelNet40, Craniosynostosis, Privacy-Preserving Learning, Benchmark, ECCV 2026",
+    "favicon": "favicon.ico",
+    "lang": "en",
+    "url": "https://ezharjan.github.io/FLKD3DBenchmark/",
+    "publicationDate": "2026"
+  },
+  "authors": [
+    {
+      "name": "Aizierjiang Aiersilan",
+      "url": "https://ezharjan.github.io/",
+      "affiliations": [1],
+      "note": ""
+    }
+  ],
+  "affiliations": [
+    { "id": 1, "name": "University of Macau" }
+  ],
+  "links": [
+    { "type": "paper", "label": "Paper", "icon": "fas fa-file-pdf", "url": "https://eccv.ecva.net/PENDING", "enabled": true },
+    { "type": "appendix", "label": "Appendix", "icon": "fas fa-file-alt", "url": "Appendix.pdf", "enabled": true },
+    { "type": "confab", "label": "Confab", "icon": "fas fa-chalkboard-teacher", "url": "https://cal.com/ezhar/30min", "enabled": true },
+    { "type": "poster", "label": "Poster", "icon": "fas fa-image", "url": "paper_poster.pdf", "enabled": false },
+    { "type": "dataset", "label": "Dataset", "icon": "fas fa-database", "url": "https://github.com/Ezharjan/FLKD3DBenchmark/tree/master/data", "enabled": true },
+    { "type": "checkpoints", "label": "Checkpoints", "icon": "fas fa-cubes", "url": "https://huggingface.co/ezharjan/FLKD3DBenchmark", "enabled": true },
+    { "type": "code", "label": "Code", "icon": "fab fa-github", "url": "https://github.com/Ezharjan/FLKD3DBenchmark/", "enabled": true },
+    { "type": "arxiv", "label": "arXiv", "icon": "ai ai-arxiv", "url": "https://arxiv.org/abs/2607.PENDING", "enabled": true }
+  ],
+  "abstract": {
+    "title": "Abstract",
+    "body": "Deploying 3D point cloud analysis in privacy-sensitive and resource-constrained settings faces two coupled barriers: data cannot be centralized for training, and the trained model must run on limited edge hardware. We present a multi-seed benchmark that jointly evaluates federated learning (FL) and knowledge distillation (KD) for 3D point cloud classification. It spans <b>thirteen FL algorithms</b> and <b>ten KD objectives</b>, supporting their full <b>130-pair</b> teacher–objective cross-product per dataset; every standardized configuration is repeated over three random seeds for <b>504 training runs</b> in total, with the complete combined grid evaluated at multi-seed scale on the clinical dataset. We characterize federated degradation and the combined-pipeline pitfall on ModelNet40, then validate them on a real-world clinical <b>craniosynostosis</b> dataset of patient head shapes, where the privacy and edge-deployment stakes are concrete. We report three findings. First, under extreme non-independent and identically distributed (non-IID) label skew, standalone FL degrades sharply: on ModelNet40 the strongest method reaches only <b>76.32%</b> against a <b>92.26%</b> centralized reference, on the clinical data the best reaches <b>75.83%</b> against 100%, and the four server-side optimizers collapse to near the chance level; the best algorithm differs by dataset, so none is universally robust. Second, distillation compresses the teacher into a student <b>74.51% smaller</b> and roughly twice as fast at inference, with five of the seven objectives evaluated on ModelNet40 matching or surpassing the <b>92.44%</b> teacher. Third, the combined pipeline exposes an evaluation pitfall: when distillation keeps a hard-label cross-entropy term on a labeled proxy split, a collapsed federated teacher at <b>8.50%</b> paired with Logit-MSE still yields a <b>92.94%</b> student. This <b>84.4-point</b> gap reflects the proxy labels rather than the federated model, and the hard-label term reuses the very labels whose privacy motivated federation. Objectives without a hard-label term instead track teacher quality (<i>r</i> ≈ 0.99 on the clinical grid) and collapse when the teacher does. We therefore recommend evaluating FL-KD pipelines with <b>label-free distillation</b>, so that the reported accuracy reflects the federated teacher rather than the proxy."
+  },
+  "sections": [
+    {
+      "type": "list",
+      "title": "Contributions",
+      "ordered": true,
+      "align": "left",
+      "items": [
+        "<b>Benchmark design.</b> Thirteen FL algorithms, a centralized baseline, and ten KD objectives, with the complete two-stage cross-product of all <b>130 teacher–objective pairs</b> per dataset. The standardized multi-seed evaluation spans <b>504 training runs</b> over three seeds; the framework is open-source and extends to new FL algorithms, KD objectives, students, and datasets through one shared interface.",
+        "<b>Quantified degradation under label skew.</b> On ModelNet40 the strongest FL method trails the centralized reference by about 16 points (FedNova, <b>76.32%</b> vs. 92.26%) and on the clinical data by about 24 points (FedProx, <b>75.83%</b> vs. 100%), while the four server-side optimizers (FedAvgM, FedAdam, FedYogi, FedAdagrad) collapse to near the chance level. The ranking is dataset-dependent, so no single algorithm is robust.",
+        "<b>Effective compression through distillation.</b> Distillation transfers the teacher into a student that is <b>74.51% smaller</b> and roughly twice as fast at inference (about 50% lower latency), with five of seven objectives matching or surpassing the 92.44% teacher; the clinical task shows the same near-ceiling compression.",
+        "<b>A controlled diagnosis of the combined pipeline.</b> Objectives that keep a hard-label cross-entropy term recover the student to near-centralized accuracy regardless of teacher quality — a collapsed teacher at 8.50% paired with Logit-MSE still yields a <b>92.94%</b> student, an <b>84.4-point</b> gap driven by the proxy labels, not by transfer. Objectives whose cross-entropy weight is exactly zero instead track the teacher (<i>r</i> ≈ 0.99 on the clinical grid). Two simple controls distinguish genuine transfer from this artifact."
+      ]
+    },
+    {
+      "type": "figure",
+      "title": "Benchmark Pipeline",
+      "image": "static/images/pipeline.jpg",
+      "alt": "Two-stage FL and KD benchmark pipeline",
+      "width": "100%",
+      "caption": "<b>Two-stage FL–KD benchmark pipeline.</b> <b>Stage 1</b> (privacy-protected): five non-IID clients train on label-skewed slices of the dataset, and the server applies one of the thirteen benchmarked FL algorithms to produce a shared PointNet++ SSG teacher. <b>Stage 2</b>: the best FL teacher checkpoint supervises a compact student on the centralized training set with a KD objective, yielding a smaller and faster student model."
+    },
+    {
+      "type": "group",
+      "title": "Benchmark Design",
+      "blocks": [
+        { "type": "subtitle", "text": "Datasets & non-IID partitioning" },
+        { "type": "text", "align": "justify", "body": "The benchmark evaluates two complementary datasets. <b>ModelNet40</b> provides point clouds over 40 shape categories with the standard normal-resampled split of 9,843 training and 2,468 test shapes, and serves to measure federated degradation at scale. The <b>craniosynostosis</b> dataset provides 3D head-surface shapes sampled from a statistical shape model, with four classes (a healthy control group and the coronal, metopic, and sagittal suture-fusion pathologies) and 100 instances per class, split deterministically 80/20 into 320 training and 80 test shapes; its near-perfect centralized ceiling lets teacher quality be read off unambiguously. Every shape is represented by 1,024 points with three spatial coordinates and no surface normals. To model federated deployment, each training set is partitioned across <b>five clients under an extreme label-skew (non-IID) strategy</b> — samples are sorted by class and cut into five disjoint contiguous slices, so each client concentrates on a few categories. Every configuration is repeated over three seeds {7, 42, 123}. The data loader is dataset-agnostic and also supports ModelNet10, OmniObject3D, YCB, and GazeboSim under the same interface." },
+        { "type": "subtitle", "text": "Teacher & student" },
+        { "type": "text", "align": "justify", "body": "The teacher is a <b>PointNet++ SSG</b> network — three hierarchical set-abstraction levels and a two-layer classification head — operating on raw coordinates without surface normals; it occupies 5.65 MB on ModelNet40 and 5.62 MB on the clinical data. The student, <b>SmallPointNet2</b>, keeps the same hierarchical structure with narrower layers at 1.44 MB on ModelNet40 (a <b>74.51% reduction</b>) and 1.42 MB on the clinical data, and exposes a penultimate feature so that feature-based distillation has a signal." },
+        { "type": "subtitle", "text": "Federated & distillation protocol" },
+        { "type": "text", "align": "justify", "body": "All FL strategies share the same setting: <b>5 clients, 5 local epochs per round, and 20 communication rounds</b>, with local training using Adam at learning rate 0.001 and batch size 24. Each full-model transmission is 5.65 MB, totaling 56.5 MB per round across the five clients and about 1.13 GB over twenty rounds. The ten KD objectives use a soft-target weight α = 0.5 (all but DKD), an intermediate-representation weight β = 0.5 (feature, attention, SP, RKD), and temperature T = 2.0. The weight on the hard-label cross-entropy term is central to the diagnosis: Vanilla KD, Logit-MSE, Cosine, CRD, and Self-Distillation weight it by (1 − α) = 0.5, DKD adds it at full weight, whereas the feature, attention, SP, and RKD objectives weight it by (1 − α − β) = 0 — leaving no hard-label term." }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Results",
+      "blocks": [
+        { "type": "subtitle", "text": "Federated learning degrades under label skew" },
+        { "type": "text", "align": "justify", "body": "Federated training degrades sharply under the label-skew partition on both datasets. On ModelNet40 the strongest method, <b>FedNova</b>, reaches only 76.32% (15.94 points below centralized); the drift-correction methods (FedProx 71.04%, FedDyn 66.00%, SCAFFOLD 64.26%) improve on plain FedAvg (58.51%), while the four server-side optimizers fall to near-trivial accuracy. The ranking is itself a finding: FedNova drops to mid-pack on the clinical data, where FedProx leads at 75.83% and is the most consistent across both — so no single algorithm is robust to label skew." },
+        {
+          "type": "table",
+          "caption": "<b>Table 1.</b> Standalone federated learning: best instance accuracy (%, mean ± std over three seeds) on both datasets, with each method's distinguishing mechanism (5 clients, non-IID label-skew, 20 rounds, 5 local epochs per round). Methods are ordered by ModelNet40 accuracy. On the balanced clinical test set the mean-class accuracy equals the instance accuracy. <b>Bold</b> marks the best FL method per dataset.",
+          "columns": [
+            { "header": "Method", "align": "left" },
+            { "header": "Distinguishing Mechanism", "align": "left" },
+            { "header": "ModelNet40 ↑" },
+            { "header": "Craniosynostosis ↑" }
+          ],
+          "rows": [
+            { "class": "baseline-row", "cells": ["Centralized", "Non-federated reference", "92.26<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.04</span>", "100.00<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.00</span>"] },
+            { "cells": ["FedNova", "Normalized local averaging", { "v": "76.32<span style='opacity:.5;font-weight:400;font-size:.85em'> ±1.55</span>", "class": "best" }, "50.83<span style='opacity:.5;font-weight:400;font-size:.85em'> ±8.04</span>"] },
+            { "cells": ["FedProx", "Proximal regularization", "71.04<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.87</span>", { "v": "75.83<span style='opacity:.5;font-weight:400;font-size:.85em'> ±10.63</span>", "class": "best" }] },
+            { "cells": ["FedDyn", "Dynamic regularization", "66.00<span style='opacity:.5;font-weight:400;font-size:.85em'> ±1.28</span>", "58.33<span style='opacity:.5;font-weight:400;font-size:.85em'> ±8.13</span>"] },
+            { "cells": ["SCAFFOLD", "Control-variate correction", "64.26<span style='opacity:.5;font-weight:400;font-size:.85em'> ±3.75</span>", "36.67<span style='opacity:.5;font-weight:400;font-size:.85em'> ±1.44</span>"] },
+            { "cells": ["Ditto", "Personalized plus global model", "61.36<span style='opacity:.5;font-weight:400;font-size:.85em'> ±4.11</span>", "71.25<span style='opacity:.5;font-weight:400;font-size:.85em'> ±9.92</span>"] },
+            { "cells": ["FedAvg", "Weighted parameter averaging", "58.51<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.25</span>", "69.58<span style='opacity:.5;font-weight:400;font-size:.85em'> ±2.60</span>"] },
+            { "cells": ["FedBN", "Client-local batch-norm", "55.28<span style='opacity:.5;font-weight:400;font-size:.85em'> ±2.37</span>", "65.42<span style='opacity:.5;font-weight:400;font-size:.85em'> ±4.73</span>"] },
+            { "cells": ["MOON", "Model-contrastive term", "45.84<span style='opacity:.5;font-weight:400;font-size:.85em'> ±7.51</span>", "69.17<span style='opacity:.5;font-weight:400;font-size:.85em'> ±8.78</span>"] },
+            { "cells": ["FedMedian", "Coordinate-wise median", "39.13<span style='opacity:.5;font-weight:400;font-size:.85em'> ±5.79</span>", "64.58<span style='opacity:.5;font-weight:400;font-size:.85em'> ±7.53</span>"] },
+            { "cells": ["FedAdagrad", "Server-side Adagrad", "6.28<span style='opacity:.5;font-weight:400;font-size:.85em'> ±1.09</span>", "26.25<span style='opacity:.5;font-weight:400;font-size:.85em'> ±2.17</span>"] },
+            { "cells": ["FedAdam", "Server-side Adam", "4.71<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.98</span>", "25.00<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.00</span>"] },
+            { "cells": ["FedAvgM", "Server-side momentum", "4.05<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.00</span>", "25.00<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.00</span>"] },
+            { "cells": ["FedYogi", "Server-side Yogi", "4.05<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.00</span>", "25.00<span style='opacity:.5;font-weight:400;font-size:.85em'> ±0.00</span>"] }
+          ],
+          "legend": "The ~2.5% ModelNet40 and 25% four-class chance floors bound the collapsed server-side optimizers."
+        },
+        { "type": "figure", "image": "static/images/fl_ranking_modelnet40.jpg", "alt": "Federated strategy accuracy on ModelNet40, ranked", "width": "78%", "caption": "<b>Federated strategy accuracy on ModelNet40</b> (best per run, mean ± std over three seeds), ranked. FedNova and FedProx lead, a broad middle band follows, FedMedian trails near 39%, and the four server-side optimizers stay near the ~4% chance level. The clinical counterpart appears in the supplementary highlights below." },
+        { "type": "subtitle", "text": "Knowledge distillation compresses the teacher" },
+        { "type": "text", "align": "justify", "body": "On a 1.44 MB student that is 74.51% smaller and roughly twice as fast as the teacher, five of seven objectives match or surpass the 92.44% teacher: Attention Transfer (92.74%), Basic KD (92.69%), Vanilla KD (92.61%), Self-Distillation (92.61%), and Feature KD (92.57%); Cosine Similarity (92.35%) trails by 0.09 points. The lone outlier is Logit-MSE (87.07%): a mean-squared error on raw output vectors is scale-sensitive, unbalancing the loss and slowing convergence. This near-uniform success under a strong teacher is exactly what makes standalone KD a poor probe of the federated teacher — the combined experiment exposes that." },
+        { "type": "figure", "image": "static/images/fig_model_efficiency.jpg", "alt": "Accuracy versus model size for the distilled students", "width": "72%", "caption": "<b>Accuracy vs. model size.</b> All SmallPointNet2 students (1.44 MB) are 74.51% smaller than the teacher (5.65 MB); each objective's student accuracy is shown relative to the 92.44% teacher, with most objectives within 0.3 points of it." },
+        { "type": "figure", "image": "static/images/prelim_modelnet40_kd_training_curves.png", "alt": "Training-epoch convergence of the KD objectives", "width": "72%", "caption": "<b>Training-epoch convergence.</b> Test accuracy over training epochs for six objectives (Basic KD overlaps Vanilla KD and is omitted): Logit-MSE converges slower and plateaus below the teacher baseline, whereas the others asymptote at or above 92.35% within 100 epochs." },
+        {
+          "type": "table",
+          "caption": "<b>Table 2.</b> Knowledge distillation on ModelNet40. Teacher: PointNet++ SSG (5.65 MB, 92.44%). Student: SmallPointNet2 (1.44 MB, 74.51% size reduction, ≈50% lower inference latency). Instance accuracy is the peak over all training epochs; all strategies run from the same pre-trained teacher checkpoint. The seven shown are six of the ten benchmark objectives plus a full-weight Basic KD probe.",
+          "columns": [
+            { "header": "Strategy", "align": "left" },
+            { "header": "Inst. Acc. (%) ↑" },
+            { "header": "Class Acc. (%) ↑" },
+            { "header": "vs. Teacher (%) ↑" }
+          ],
+          "rows": [
+            { "class": "baseline-row", "cells": ["Teacher (PointNet++ SSG)", "92.44", "90.24", "0.00"] },
+            { "cells": ["Attention Transfer", { "v": "92.74", "class": "best" }, "90.05", { "v": "+0.30", "class": "best" }] },
+            { "cells": ["Basic KD", "92.69", "89.30", "+0.25"] },
+            { "cells": ["Vanilla KD", "92.61", "89.43", "+0.17"] },
+            { "cells": ["Self-Distillation", "92.61", "89.66", "+0.17"] },
+            { "cells": ["Feature KD", "92.57", "89.52", "+0.13"] },
+            { "cells": ["Cosine Similarity", "92.35", { "v": "90.12", "class": "best" }, "−0.09"] },
+            { "cells": ["Logit-MSE", "87.07", "75.08", "−5.37"] }
+          ],
+          "legend": "Best value per column in green. Five of seven objectives meet or surpass the teacher on the compact student."
+        },
+        { "type": "subtitle", "text": "Combined FL + KD: the recovery illusion" },
+        { "type": "text", "align": "justify", "body": "Chaining the two stages exposes the benchmark's central finding. The five objectives with a positive cross-entropy coefficient recover near-centralized accuracy from every teacher: the peak cell, <b>SCAFFOLD + Logit-MSE at 92.94%</b>, exceeds the 92.44% centralized reference despite a teacher that converges to only 8.50% on its own — a gap of 84.4 points above the teacher it distilled from, which cannot reflect genuine transfer. Feature- and attention-based objectives, whose cross-entropy coefficient is exactly zero, instead track teacher quality and collapse with it (15.82–18.20% for the collapsed teachers). The apparent recovery is driven by cross-entropy on the labeled proxy split, and it reuses the very labels whose privacy motivated federation." },
+        { "type": "figure", "image": "static/images/kd_robustness_scatter.jpg", "alt": "Student accuracy versus FL teacher accuracy", "width": "72%", "caption": "<b>Student vs. teacher accuracy.</b> Student instance accuracy against FL-teacher standalone accuracy for the seven objectives: the five with a positive cross-entropy coefficient stay near the 92% centralized line for every teacher — even one collapsed to 8.50% — because the labeled proxy split supervises the student directly, whereas Attention Transfer and Feature KD (coefficient exactly 0) fall in step with the teacher." },
+        { "type": "figure", "image": "static/images/kd_robustness_bars.jpg", "alt": "Recovery from a collapsed SCAFFOLD teacher by objective", "width": "72%", "caption": "<b>Recovery from a collapsed teacher.</b> Student accuracy distilled from the collapsed SCAFFOLD teacher (8.50% standalone) under each objective: the five hard-label objectives recover to the 92.44% centralized ceiling — a gap of up to 84.4 points above the teacher — while Attention Transfer and Feature KD stay near the teacher's own level." },
+        {
+          "type": "table",
+          "caption": "<b>Table 3.</b> Two-stage combined pipeline: instance accuracy (%) on ModelNet40 (focused round, individual checkpoints). Each cell is the best instance accuracy of a SmallPointNet2 student trained with the given KD objective after federated pre-training of the teacher; <b>Std.</b> is the teacher's own standalone accuracy. These five teachers span the full standalone-accuracy range. <b>Bold</b> (green) marks the best value in each KD-objective column; † denotes runs stopped before 200 epochs.",
+          "columns": [
+            { "header": "FL Teacher", "align": "left" },
+            { "header": "Std." },
+            { "header": "VKD ↑" },
+            { "header": "BKD ↑" },
+            { "header": "SD ↑" },
+            { "header": "AT ↑" },
+            { "header": "FKD ↑" },
+            { "header": "MSE ↑" },
+            { "header": "Cos ↑" }
+          ],
+          "rows": [
+            { "cells": ["FedAvg", "60.83", "92.61", "92.57", "92.45", "50.74", "50.16", "92.29†", "91.67†"] },
+            { "cells": ["FedAvg (van.)", "56.38", "92.57", "92.53", "92.65", "47.31", "51.46", "92.82", "87.84†"] },
+            { "cells": ["FedProx", "67.61", "92.41", "92.13", "73.85†", { "v": "53.84", "class": "best" }, { "v": "54.16", "class": "best" }, "66.97†", { "v": "92.49", "class": "best" }] },
+            { "cells": ["FedDyn", "16.67", { "v": "92.65", "class": "best" }, { "v": "92.77", "class": "best" }, { "v": "92.78", "class": "best" }, "15.82†", "18.20", "92.73", "88.10†"] },
+            { "cells": ["SCAFFOLD", "8.50", { "v": "92.65", "class": "best" }, "92.61", "92.45", "16.99†", "16.99", { "v": "92.94", "class": "best" }, "92.33"] }
+          ],
+          "legend": "VKD Vanilla KD · BKD Basic KD · SD Self-Distillation · AT Attention Transfer · FKD Feature KD · MSE Logit-MSE · Cos Cosine Similarity. FedAvg (van.) uses uniform client averaging. The first three objectives plus MSE and Cos keep a hard-label term; AT and FKD do not."
+        },
+        { "type": "callout", "variant": "danger", "body": "<b>Two diagnostic controls.</b> Re-running any FL+KD result <i>(i)</i> with the hard-label cross-entropy term removed (α = 1) or <i>(ii)</i> on an unlabeled proxy split leaves the teacher as the only supervision, collapsing the student back toward its FL teacher's standalone accuracy — a SCAFFOLD-conditioned student toward 8.50%, not 92.94%. Any residual recovery signals cross-entropy-driven masking rather than genuine knowledge transfer." },
+        { "type": "subtitle", "text": "Real-world validation: clinical craniosynostosis" },
+        { "type": "text", "align": "justify", "body": "The clinical craniosynostosis dataset shows the illusion survives on real patient data. Running the complete 13 × 10 cross-product at full multi-seed scale, the six objectives that keep a cross-entropy term recover the student from any teacher — a teacher frozen at the 25% chance level (FedAvgM) still yields a 97.5% student under Vanilla KD and 100% under CRD — varying by at most 7.5 points and not correlating with teacher quality (<i>r</i> from −0.53 to +0.37). The four pure-transfer objectives track the teacher almost perfectly (<i>r</i> = 0.986–0.990), spanning about 58 points and falling to chance when the teacher does. A hard-label-distilled student thus logs near-100% accuracy from a chance-level federated teacher while silently reusing the patient labels that federation was meant to protect; only label-free distillation reports the teacher's true quality." },
+        {
+          "type": "table",
+          "caption": "<b>Table 4.</b> Combined pipeline on the clinical task, summarized by KD objective over all thirteen FL teachers (mean instance accuracy, %, three seeds). <b>CE wt.</b> is the weight on the hard-label cross-entropy term. <b>Chance teacher</b> uses FedAvgM (25% chance level); <b>best teacher</b> uses FedProx (75.83%). <b>Range</b> is the spread across the thirteen teachers, and <i>r</i> is the Pearson correlation between student accuracy and the teacher's standalone accuracy.",
+          "columns": [
+            { "header": "KD Objective", "align": "left" },
+            { "header": "CE wt." },
+            { "header": "Chance teacher" },
+            { "header": "Best teacher" },
+            { "header": "Range" },
+            { "header": "r" }
+          ],
+          "rows": [
+            { "cells": ["Vanilla KD", "0.5", "97.5", "99.6", "2.5", "+0.37"] },
+            { "cells": ["Self-Distillation", "0.5", "99.2", "99.6", "1.2", "+0.19"] },
+            { "cells": ["Cosine Similarity", "0.5", "99.6", "100.0", "0.8", "−0.05"] },
+            { "cells": ["Contrastive (CRD)", "0.5", "100.0", "99.6", "0.8", "−0.53"] },
+            { "cells": ["Logit-MSE", "0.5", "97.5", "99.2", "3.8", "+0.10"] },
+            { "cells": ["Decoupled KD", "1.0", "93.8", "96.7", "7.5", "−0.10"] },
+            { "class": "baseline-row", "cells": ["Feature KD", "0", "27.1", "84.2", "57.5", { "v": "+0.99", "class": "best" }] },
+            { "class": "baseline-row", "cells": ["Attention Transfer", "0", "25.0", "83.3", "58.3", { "v": "+0.99", "class": "best" }] },
+            { "class": "baseline-row", "cells": ["Relational KD", "0", "27.5", "81.7", "57.5", { "v": "+0.99", "class": "best" }] },
+            { "class": "baseline-row", "cells": ["Similarity-Preserving", "0", "25.0", "82.9", "58.3", { "v": "+0.99", "class": "best" }] }
+          ],
+          "legend": "Top six rows keep a hard-label term (r ≈ 0, recover from any teacher); the four shaded rows are pure-transfer objectives (CE weight = 0) that track the teacher (r ≈ 0.99)."
+        },
+        { "type": "figure", "image": "static/images/flkd_heatmap_craniosynostosis.jpg", "alt": "Combined FL+KD instance-accuracy heatmap on the clinical task", "width": "94%", "caption": "<b>The recovery illusion on the clinical task.</b> Student accuracy for each FL teacher (rows) and KD objective (columns), mean over three seeds, with per-column means above. The six columns that keep a hard-label cross-entropy term are uniformly bright — the student recovers to roughly 92–100% even when the teacher is at the 25% chance level — while the four feature-based columns darken in step with the teacher, collapsing to near-chance accuracy for the failed server-side optimizers. Axes follow the benchmark's native order, so the two kinds of column are interleaved." }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Supplementary Highlights",
+      "blocks": [
+        { "type": "text", "align": "justify", "body": "The 44-page appendix reports every table and figure behind the results above, including per-seed values and the full 13 × 10 grids. A selection is reproduced here; all numbers are means over three seeds." },
+        { "type": "subtitle", "text": "Federated learning analysis" },
+        { "type": "figure", "image": "static/images/fl_convergence_modelnet40.jpg", "alt": "Federated convergence on ModelNet40", "width": "82%", "caption": "<b>FL convergence on ModelNet40.</b> Per-round test instance accuracy (mean over three seeds) for all thirteen algorithms; the dashed line marks the centralized reference. FedNova and FedProx lead, a broad middle band follows, FedMedian trails near 39%, and the four server-side optimizers stay near the chance level." },
+        { "type": "figure", "image": "static/images/fl_convergence_craniosynostosis.jpg", "alt": "Federated convergence on the clinical task", "width": "82%", "caption": "<b>FL convergence on the clinical task.</b> Per-round accuracy for all thirteen algorithms; FedProx leads, SCAFFOLD stalls near 37%, and the four server-side optimizers stay at the 25% four-class chance level. Trajectories are noisier because the test set has only 80 shapes." },
+        { "type": "figure", "image": "static/images/fl_ranking_craniosynostosis.jpg", "alt": "Federated strategy accuracy on the clinical task, ranked", "width": "78%", "caption": "<b>Federated strategy accuracy on the clinical task</b> (best per run, mean ± std over three seeds), ranked. FedProx leads at 75.83%; the ranking differs from ModelNet40, reinforcing that no single method is robust." },
+        { "type": "figure", "image": "static/images/fl_comm_pareto_modelnet40.jpg", "alt": "Accuracy versus communication cost on ModelNet40", "width": "78%", "caption": "<b>Accuracy vs. per-round communication on ModelNet40.</b> Communication is the full 5.65 MB model payload aggregated over the five clients and is identical across strategies (56.5 MB per round), yet accuracy varies widely at fixed cost." },
+        { "type": "figure", "image": "static/images/fl_comm_pareto_craniosynostosis.jpg", "alt": "Accuracy versus communication cost on the clinical task", "width": "78%", "caption": "<b>Accuracy vs. per-round communication on the clinical task.</b> The clinical dataset is far smaller, so rounds are seconds rather than minutes; MOON and Ditto, which train an auxiliary model per client, are markedly slower per round." },
+        { "type": "subtitle", "text": "Distillation efficiency" },
+        { "type": "figure", "image": "static/images/efficiency_pareto_modelnet40.jpg", "alt": "Accuracy versus model size and latency on ModelNet40", "width": "88%", "caption": "<b>Accuracy vs. model size and latency on ModelNet40.</b> Compact students cluster at the upper left near the teacher's accuracy at 1.44 MB and lower latency; standalone federated models keep the teacher's 5.65 MB footprint while spanning the full accuracy range; combined students inherit the compact size. Wall-clock latencies are single-GPU averages." },
+        { "type": "figure", "image": "static/images/efficiency_pareto_craniosynostosis.jpg", "alt": "Efficiency of distillation on the clinical task", "width": "88%", "caption": "<b>Efficiency of distillation on the clinical task.</b> KD students cluster near the teacher's accuracy at 1.42 MB and about 60–69 ms per evaluation batch, against the 5.62 MB, ≈126 ms teacher — close to a halving of latency at 3.9× smaller size." },
+        { "type": "figure", "image": "static/images/kd_ranking_craniosynostosis.jpg", "alt": "Standalone distillation accuracy on the clinical task", "width": "78%", "caption": "<b>Standalone distillation on the clinical task.</b> Test instance accuracy of the ten KD objectives distilling the 100% centralized teacher into the compact student (mean ± std over three seeds); four objectives reach 100%, five reach 99.58%, and Decoupled KD trails at 98.75% — every objective within 1.25 points of the teacher." },
+        { "type": "figure", "image": "static/images/kd_compression_craniosynostosis.jpg", "alt": "Distillation accuracy versus compression on the clinical task", "width": "88%", "caption": "<b>Distillation keeps accuracy while shedding cost (clinical task).</b> All objectives stay within 1.25 points of the 100% teacher while model size falls from 5.62 to 1.42 MB (a 74.7% reduction, 3.9× smaller) and mean inference latency from about 126 to 64 ms (−49%, 2.0× faster)." },
+        { "type": "subtitle", "text": "Combined pipeline — full multi-seed grids" },
+        { "type": "figure", "image": "static/images/flkd_heatmap_modelnet40.jpg", "alt": "Multi-seed combined-pipeline grid on ModelNet40", "width": "94%", "caption": "<b>Multi-seed combined-pipeline grid on ModelNet40</b> (13 × 10, mean over three seeds), with per-column means above. The hard-label columns stay high while the pure-transfer columns track the teacher; the strongest single cell pairs the chance-level FedYogi teacher (4.05%) with Logit-MSE at 92.8%, an 88.8-point gap that again reflects the proxy labels." },
+        { "type": "figure", "image": "static/images/flkd_synergy_modelnet40.jpg", "alt": "Combined-pipeline synergy on ModelNet40", "width": "94%", "caption": "<b>No positive synergy on ModelNet40.</b> Each cell is the combined student's accuracy minus the better of its two stand-alone components. The six hard-label objectives stay near zero (reproducing centralized distillation through the proxy labels), while the four pure-transfer objectives fall well below their best component for collapsed teachers." },
+        { "type": "figure", "image": "static/images/flkd_synergy_craniosynostosis.jpg", "alt": "Combined-pipeline synergy on the clinical task", "width": "94%", "caption": "<b>No positive synergy on the clinical task.</b> No configuration improves on its best single component by more than about half a point; the pure-transfer objectives fall up to ~75 points below their best component for the collapsed server-side optimizers." },
+        { "type": "figure", "image": "static/images/best_combos_modelnet40.jpg", "alt": "Top FL+KD combinations on ModelNet40", "width": "82%", "caption": "<b>The ModelNet40 leaderboard rewards collapsed teachers.</b> The twelve highest-accuracy FL+KD combinations (mean ± std over three seeds); several pair a hard-label objective with a teacher near the 4% chance level (for example FedYogi + Logit-MSE at 92.8%), so the ranking reflects the proxy labels rather than teacher quality." },
+        { "type": "figure", "image": "static/images/best_combos_craniosynostosis.jpg", "alt": "Top FL+KD combinations on the clinical task", "width": "82%", "caption": "<b>The clinical leaderboard also rewards collapsed teachers.</b> The twelve highest-accuracy combinations all exceed 99.5%, yet several pair a hard-label objective (cosine, CRD, vanilla, self) with a teacher frozen near the 25% four-class chance level (FedAdagrad, FedAvgM, FedAdam, FedYogi)." },
+        { "type": "subtitle", "text": "Additional datasets" },
+        { "type": "figure", "image": "static/images/fl_accuracy_modelnet10.jpg", "alt": "Federated strategy accuracy on ModelNet10", "width": "78%", "caption": "<b>Federated strategy accuracy on ModelNet10</b> (best per run, mean ± std over three seeds). The dataset-agnostic loader reproduces the same degradation pattern beyond ModelNet40." },
+        { "type": "figure", "image": "static/images/fl_convergence_modelnet10.jpg", "alt": "Federated convergence on ModelNet10", "width": "78%", "caption": "<b>Federated convergence on ModelNet10</b> (per-round test accuracy, mean over three seeds)." },
+        { "type": "figure", "image": "static/images/fl_accuracy_omni_object3d.jpg", "alt": "Federated strategy accuracy on OmniObject3D", "width": "78%", "caption": "<b>Federated strategy accuracy on OmniObject3D</b> (best per run, mean ± std over three seeds)." },
+        { "type": "figure", "image": "static/images/fl_convergence_omni_object3d.jpg", "alt": "Federated convergence on OmniObject3D", "width": "78%", "caption": "<b>Federated convergence on OmniObject3D</b> (per-round test accuracy, mean over three seeds)." },
+        { "type": "figure", "image": "static/images/kd_accuracy_modelnet10.jpg", "alt": "Standalone knowledge distillation on ModelNet10", "width": "78%", "caption": "<b>Standalone knowledge distillation on ModelNet10.</b> Student accuracy for each KD objective distilling the centralized teacher (mean ± std over three seeds)." },
+        { "type": "figure", "image": "static/images/kd_accuracy_omni_object3d.jpg", "alt": "Standalone knowledge distillation on OmniObject3D", "width": "78%", "caption": "<b>Standalone knowledge distillation on OmniObject3D.</b> Student accuracy for each KD objective distilling the centralized teacher (mean ± std over three seeds)." }
+      ]
+    }
+  ],
+  "poster": { "enabled": false, "title": "Poster", "file": "paper_poster.pdf" },
+  "bibtex": {
+    "title": "BibTeX",
+    "entry": "@inproceedings{aizierjiang26benchmark,\n  title={Benchmarking Federated Learning and Knowledge Distillation for Point Cloud Classification},\n  author={Aizierjiang Aiersilan},\n  booktitle={European Conference on Computer Vision},\n  organization={Springer},\n  year={2026}\n}"
+  },
+  "footer": {
+    "showLinks": true,
+    "text": "© 2026 Aizierjiang Aiersilan · University of Macau. Source code and trained checkpoints are all publicly released."
+  }
+}

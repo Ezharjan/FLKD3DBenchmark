@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Research Project Page configuration",
+  "description": "Data layer for the config-driven academic project page. Edit this file to change the page; static/js/render.js renders it. See README.md.",
+  "type": "object",
+  "required": ["site"],
+  "additionalProperties": true,
+  "properties": {
+    "$schema": { "type": "string" },
+    "site": {
+      "type": "object",
+      "description": "Page metadata and SEO. Injected into <head> at runtime.",
+      "required": ["title"],
+      "additionalProperties": true,
+      "properties": {
+        "title": { "type": "string", "description": "Paper / project title (also the browser tab title)." },
+        "venue": { "type": "string", "description": "Venue line under the title, e.g. 'ECCV 2026'. Optional." },
+        "description": { "type": "string", "description": "Meta description for search engines and link previews." },
+        "keywords": { "type": "string", "description": "Comma-separated meta keywords." },
+        "favicon": { "type": "string", "description": "Path to the favicon, relative to the project root.", "default": "favicon.ico" },
+        "lang": { "type": "string", "default": "en" },
+        "url": { "type": "string", "description": "Canonical site URL (optional)." },
+        "publicationDate": { "type": "string", "description": "Year or date for citation meta, e.g. '2026'." }
+      }
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string", "description": "Personal/homepage link. Optional." },
+          "affiliations": { "type": "array", "items": { "type": "integer" }, "description": "IDs referencing the affiliations array. Superscripts shown only when more than one affiliation exists." },
+          "note": { "type": "string", "description": "Optional superscript symbol after the name, e.g. '*' for equal contribution." }
+        }
+      }
+    },
+    "affiliations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "description": "Hero buttons. Common types: paper, arxiv, code, dataset, poster, appendix, video, project, slides. Set enabled:false to hide without deleting.",
+      "items": {
+        "type": "object",
+        "required": ["label", "url"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "type": "string" },
+          "label": { "type": "string" },
+          "icon": { "type": "string", "description": "Font Awesome class, e.g. 'fas fa-file-pdf', 'fab fa-github'." },
+          "url": { "type": "string", "description": "External URL (https://...) or a file in the project root (e.g. 'paper_poster.pdf')." },
+          "enabled": { "type": "boolean", "default": true }
+        }
+      }
+    },
+    "abstract": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string", "default": "Abstract" },
+        "body": { "type": "string", "description": "Abstract text. Inline HTML such as <b>, <i> is allowed." }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "description": "Ordered content blocks rendered between the abstract and the poster.",
+      "items": { "$ref": "#/definitions/block" }
+    },
+    "poster": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "title": { "type": "string", "default": "Poster" },
+        "file": { "type": "string", "description": "PDF in the project root, e.g. 'paper_poster.pdf'. Must not be password-protected for inline display." }
+      }
+    },
+    "bibtex": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string", "default": "BibTeX" },
+        "enabled": { "type": "boolean", "default": true, "description": "Set false to hide the BibTeX section." },
+        "entry": { "type": "string", "description": "Raw BibTeX. Use \\n for line breaks." }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "showLinks": { "type": "boolean", "description": "Repeat the hero links as icons in the footer." },
+        "text": { "type": "string", "description": "Footer note. Inline HTML allowed." }
+      }
+    }
+  },
+  "definitions": {
+    "cell": {
+      "description": "A table cell: a plain string, or an object with a value and a CSS class (e.g. 'best').",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["v"],
+          "additionalProperties": false,
+          "properties": {
+            "v": { "type": "string" },
+            "class": { "type": "string", "description": "e.g. 'best' to highlight a winning cell." }
+          }
+        }
+      ]
+    },
+    "block": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": true,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["text", "list", "figure", "table", "callout", "subtitle", "html", "group", "video"]
+        },
+        "title": { "type": "string", "description": "Section heading (rendered as an <h2>). Omit inside a group's blocks." },
+        "align": { "type": "string", "enum": ["left", "center", "justify"], "default": "justify" },
+        "body": { "type": "string", "description": "HTML body for text / html / callout blocks." },
+        "text": { "type": "string", "description": "Heading text for a subtitle block (<h3>)." },
+        "ordered": { "type": "boolean", "description": "list block: numbered (true, default) or bulleted (false)." },
+        "items": { "type": "array", "items": { "type": "string" }, "description": "list block items (inline HTML allowed)." },
+        "image": { "type": "string", "description": "figure block: path to the image, e.g. 'static/images/pipeline.png'." },
+        "alt": { "type": "string" },
+        "width": { "type": "string", "description": "figure width, e.g. '100%' or '68%'.", "default": "100%" },
+        "caption": { "type": "string", "description": "figure caption (inline HTML allowed)." },
+        "variant": { "type": "string", "description": "callout style, e.g. 'danger' or 'info'." },
+        "enabled": { "type": "boolean", "default": true, "description": "Set false to hide this section/block." },
+        "url": { "type": "string", "description": "video block: a single video URL (YouTube watch/share/embed, Vimeo, or .mp4/.webm)." },
+        "videos": {
+          "type": "array",
+          "description": "video block: one or more videos rendered as responsive embeds.",
+          "items": {
+            "type": "object",
+            "required": ["url"],
+            "additionalProperties": false,
+            "properties": {
+              "title": { "type": "string", "description": "optional per-video subtitle (<h3>)." },
+              "url": { "type": "string" },
+              "caption": { "type": "string" },
+              "enabled": { "type": "boolean" }
+            }
+          }
+        },
+        "columns": {
+          "type": "array",
+          "description": "table block column headers.",
+          "items": {
+            "type": "object",
+            "required": ["header"],
+            "additionalProperties": false,
+            "properties": {
+              "header": { "type": "string" },
+              "align": { "type": "string", "enum": ["left", "center"] }
+            }
+          }
+        },
+        "rows": {
+          "type": "array",
+          "description": "table block rows.",
+          "items": {
+            "type": "object",
+            "required": ["cells"],
+            "additionalProperties": false,
+            "properties": {
+              "class": { "type": "string", "description": "row class, e.g. 'baseline-row'." },
+              "cells": { "type": "array", "items": { "$ref": "#/definitions/cell" } }
+            }
+          }
+        },
+        "legend": { "type": "string", "description": "table block footnote/legend line." },
+        "blocks": {
+          "type": "array",
+          "description": "group block: nested blocks (subtitle, text, figure, table, callout).",
+          "items": { "$ref": "#/definitions/block" }
+        }
+      }
+    }
+  }
+}
