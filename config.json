@@ -24,6 +24,8 @@
   "links": [
     { "type": "paper", "label": "Paper", "icon": "fas fa-file-pdf", "url": "https://eccv.ecva.net/PENDING", "enabled": false },
     { "type": "appendix", "label": "Appendix", "icon": "fas fa-file-alt", "url": "Appendix.pdf", "enabled": true },
+    { "type": "video", "label": "Video", "icon": "fab fa-youtube", "url": "https://youtu.be/1vRiXZXMsIU", "enabled": true },
+    { "type": "slides", "label": "Slides", "icon": "fas fa-file-powerpoint", "url": "presentation_clised_5minutes.pdf", "download": "FLKD3DBenchmark_Slides.pdf", "enabled": true },
     { "type": "poster", "label": "Poster", "icon": "fas fa-image", "url": "paper_poster.pdf", "enabled": true },
     { "type": "confab", "label": "Confab", "icon": "fas fa-chalkboard-teacher", "url": "https://cal.com/ezhar/30min", "enabled": true },
     { "type": "dataset", "label": "Dataset", "icon": "fas fa-database", "url": "https://github.com/Ezharjan/FLKD3DBenchmark/tree/master/data", "enabled": true },
@@ -36,6 +38,13 @@
     "body": "Deploying 3D point cloud analysis in privacy-sensitive and resource-constrained settings faces two coupled barriers: data cannot be centralized for training, and the trained model must run on limited edge hardware. We present a multi-seed benchmark that jointly evaluates federated learning (FL) and knowledge distillation (KD) for 3D point cloud classification. It spans <b>thirteen FL algorithms</b> and <b>ten KD objectives</b>, supporting their full <b>130-pair</b> teacher–objective cross-product per dataset; every standardized configuration is repeated over three random seeds for <b>504 training runs</b> in total, with the complete combined grid evaluated at multi-seed scale on the clinical dataset. We characterize federated degradation and the combined-pipeline pitfall on ModelNet40, then validate them on a real-world clinical <b>craniosynostosis</b> dataset of patient head shapes, where the privacy and edge-deployment stakes are concrete. We report three findings. First, under extreme non-independent and identically distributed (non-IID) label skew, standalone FL degrades sharply: on ModelNet40 the strongest method reaches only <b>76.32%</b> against a <b>92.26%</b> centralized reference, on the clinical data the best reaches <b>75.83%</b> against 100%, and the four server-side optimizers collapse to near the chance level; the best algorithm differs by dataset, so none is universally robust. Second, distillation compresses the teacher into a student <b>74.51% smaller</b> and roughly twice as fast at inference, with five of the seven objectives evaluated on ModelNet40 matching or surpassing the <b>92.44%</b> teacher. Third, the combined pipeline exposes an evaluation pitfall: when distillation keeps a hard-label cross-entropy term on a labeled proxy split, a collapsed federated teacher at <b>8.50%</b> paired with Logit-MSE still yields a <b>92.94%</b> student. This <b>84.4-point</b> gap reflects the proxy labels rather than the federated model, and the hard-label term reuses the very labels whose privacy motivated federation. Objectives without a hard-label term instead track teacher quality (<i>r</i> ≈ 0.99 on the clinical grid) and collapse when the teacher does. We therefore recommend evaluating FL-KD pipelines with <b>label-free distillation</b>, so that the reported accuracy reflects the federated teacher rather than the proxy."
   },
   "sections": [
+    {
+      "type": "video",
+      "title": "Video",
+      "videos": [
+        { "url": "https://youtu.be/1vRiXZXMsIU", "caption": "Five-minute presentation of the benchmark (ECCV 2026)." }
+      ]
+    },
     {
       "type": "list",
       "title": "Contributions",
@@ -217,7 +226,14 @@
       ]
     }
   ],
-  "poster": { "enabled": true, "title": "Poster", "file": "paper_poster.pdf" },
+  "slides": {
+    "enabled": true,
+    "title": "Slides",
+    "file": "presentation_clised_5minutes.pdf",
+    "aspect": "16:9",
+    "caption": "Ten slides from the five-minute talk. <a href=\"presentation_clised_5minutes.pdf\" download=\"FLKD3DBenchmark_Slides.pdf\">Download the PDF</a> · <a href=\"presentation_clised_5minutes.pdf\" target=\"_blank\" rel=\"noopener\">open it in a new tab</a>."
+  },
+  "poster": { "enabled": true, "title": "Poster", "file": "paper_poster.pdf", "aspect": "1.237:1" },
   "bibtex": {
     "title": "BibTeX",
     "entry": "@inproceedings{aizierjiang26benchmark,\n  title={Benchmarking Federated Learning and Knowledge Distillation for Point Cloud Classification},\n  author={Aizierjiang Aiersilan},\n  booktitle={European Conference on Computer Vision},\n  organization={Springer},\n  year={2026}\n}"

@@ -7,7 +7,8 @@
  * you should rarely need to touch this file.
  *
  * Supported section/block types (see config.schema.json for the full
- * contract): text, list, figure, table, callout, subtitle, html, group.
+ * contract): text, list, figure, table, callout, subtitle, html, video,
+ * group. The `slides` and `poster` objects render as embedded PDFs.
  * ===================================================================== */
 (function () {
   "use strict";
@@ -96,6 +97,22 @@
     if (site.venue) setMetaTag("name", "citation_conference_title", site.venue);
   }
 
+  /* ---------- link attributes: new tab, or direct download ----------
+   * A link that carries `download` points at a file shipped with the page
+   * (e.g. the slides PDF): the browser saves it instead of navigating away.
+   * `download: "Name.pdf"` also sets the file name it is saved under.
+   */
+  function linkAttrs(l, cls) {
+    var attrs = { href: l.url, "class": cls };
+    if (l.download) {
+      attrs.download = (typeof l.download === "string") ? l.download : "";
+    } else {
+      attrs.target = "_blank";
+      attrs.rel = "noopener";
+    }
+    return attrs;
+  }
+
   /* ---------- hero ---------- */
   function buildHero(cfg) {
     var site = cfg.site || {};
@@ -139,12 +156,7 @@
     if (links.length) {
       var lc = h("div", { "class": "publication-links" });
       links.forEach(function (l) {
-        var a = h("a", {
-          href: l.url,
-          "class": "external-link button is-normal is-rounded is-dark",
-          target: "_blank",
-          rel: "noopener"
-        }, [
+        var a = h("a", linkAttrs(l, "external-link button is-normal is-rounded is-dark"), [
           h("span", { "class": "icon" }, h("i", { "class": l.icon || "fas fa-link" })),
           h("span", null, l.label || l.type || "Link")
         ]);
@@ -319,19 +331,39 @@
     return sectionWrap(col, {});
   }
 
-  /* ---------- poster ---------- */
-  function buildPoster(cfg) {
-    var p = cfg.poster || {};
-    if (!p.enabled || !p.file) return null;
+  /* ---------- embedded PDF sections (slides, poster) ----------
+   * `aspect` sizes the responsive box to the PDF's own page shape and
+   * accepts "16:9", "1.237:1", a bare "56.25%", or a width/height number.
+   */
+  function aspectPadding(aspect) {
+    var DEFAULT = "56.25%"; // 16:9
+    if (typeof aspect === "number" && aspect > 0) return (100 / aspect).toFixed(4) + "%";
+    if (typeof aspect === "string") {
+      var s = aspect.trim();
+      var m = s.match(/^([0-9.]+)\s*[:\/x]\s*([0-9.]+)$/i);
+      if (m && parseFloat(m[1]) > 0) return (parseFloat(m[2]) / parseFloat(m[1]) * 100).toFixed(4) + "%";
+      if (/^[0-9.]+%$/.test(s)) return s;
+      var n = parseFloat(s);
+      if (n > 0) return (100 / n).toFixed(4) + "%";
+    }
+    return DEFAULT;
+  }
+
+  function buildPdfSection(node, fallbackTitle, opts) {
+    var p = node || {};
+    if (p.enabled === false || !p.file) return null;
+    var title = p.title || fallbackTitle;
     var col = h("div", { "class": "column is-four-fifths has-text-centered" });
-    col.appendChild(h("hr"));
-    col.appendChild(h("h2", { "class": "title is-3", html: p.title || "Poster" }));
-    var pdf = h("div", { "class": "publication-pdf" });
-    pdf.appendChild(h("iframe", { src: p.file, frameborder: "0", loading: "lazy" }));
+    if (p.separator !== false) col.appendChild(h("hr"));
+    col.appendChild(h("h2", { "class": "title is-3", html: title }));
+    var pdf = h("div", { "class": "publication-pdf", style: "padding-bottom:" + aspectPadding(p.aspect) });
+    pdf.appendChild(h("iframe", { src: p.file, title: title, frameborder: "0", loading: "lazy" }));
     col.appendChild(pdf);
-    col.appendChild(h("p", { "class": "fig-caption has-text-centered",
-      html: 'If the poster does not display, <a href="' + p.file + '" target="_blank" rel="noopener">open it directly</a>.' }));
-    return sectionWrap(col, {});
+    var caption = p.caption != null ? p.caption
+      : 'If the ' + String(title).toLowerCase() + ' does not display, ' +
+        '<a href="' + p.file + '" target="_blank" rel="noopener">open it directly</a>.';
+    if (caption) col.appendChild(h("p", { "class": "fig-caption has-text-centered", html: caption }));
+    return sectionWrap(col, opts || {});
   }
 
   /* ---------- bibtex ---------- */
@@ -386,8 +418,9 @@
       if (links.length) {
         var p = h("p", { "class": "footer-icons" });
         links.forEach(function (l) {
-          p.appendChild(h("a", { href: l.url, "class": "icon-link", target: "_blank", rel: "noopener", title: l.label || l.type },
-            h("i", { "class": l.icon || "fas fa-link" })));
+          var fa = linkAttrs(l, "icon-link");
+          fa.title = l.label || l.type;
+          p.appendChild(h("a", fa, h("i", { "class": l.icon || "fas fa-link" })));
         });
         content.appendChild(p);
         any = true;
@@ -412,7 +445,9 @@
       var sec = buildSection(s, {});
       if (sec) frag.appendChild(sec);
     });
-    var poster = buildPoster(cfg);
+    var slides = buildPdfSection(cfg.slides, "Slides", { id: "slides" });
+    if (slides) frag.appendChild(slides);
+    var poster = buildPdfSection(cfg.poster, "Poster", { id: "poster" });
     if (poster) frag.appendChild(poster);
     var bib = buildBibtex(cfg);
     if (bib) frag.appendChild(bib);

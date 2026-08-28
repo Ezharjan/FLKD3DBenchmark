@@ -361,8 +361,17 @@ body {
 }
 
 /* Video embeds (responsive 16:9; supports iframe and <video>) */
-.publication-video { margin-bottom: 1.25rem; }
+.publication-video { margin-bottom: 1.25rem; background: #000; }
 .publication-video video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; }
+
+/* Captions sit closer to the embed they describe than to the next section */
+.publication-video + .fig-caption,
+.publication-pdf + .fig-caption { margin-top: 0.9rem; margin-bottom: 0; }
+
+/* Keep the embedded slides / poster readable on phones */
+@media screen and (max-width: 768px) {
+  .publication-pdf { min-height: 320px; }
+}
 
 /* ================================================================
    Spacing refinements — airy hero + clearer section separation
