@@ -349,19 +349,81 @@
     return DEFAULT;
   }
 
+  /* Page images (`images` / `image`) are the reliable way to show a document
+   * in the page: many browsers — most mobile ones — silently render nothing
+   * for an inline PDF. Without them the section falls back to a PDF embed.
+   */
+  function buildGallery(p, title, imgs) {
+    var wrap = h("div", { "class": "pdf-gallery" });
+    var frame = h("div", { "class": "pdf-gallery-frame", style: "padding-bottom:" + aspectPadding(p.aspect) });
+    var single = imgs.length < 2;
+    var img = h("img", {
+      src: imgs[0],
+      alt: title + (single ? "" : " — page 1 of " + imgs.length),
+      draggable: "false"
+    });
+
+    if (single && p.file) {
+      frame.appendChild(h("a", { href: p.file, target: "_blank", rel: "noopener", title: "Open the full PDF" }, img));
+    } else {
+      frame.appendChild(img);
+    }
+    wrap.appendChild(frame);
+    if (single) return wrap;
+
+    var i = 0;
+    var prev = h("button", { type: "button", "aria-label": "Previous page", html: "&#8249;" });
+    var next = h("button", { type: "button", "aria-label": "Next page", html: "&#8250;" });
+    var counter = h("span", { "class": "pdf-gallery-counter", "aria-live": "polite" });
+
+    function preload(n) { if (imgs[n]) { var x = new Image(); x.src = imgs[n]; } }
+    function show(n) {
+      i = Math.min(Math.max(n, 0), imgs.length - 1);
+      img.src = imgs[i];
+      img.alt = title + " — page " + (i + 1) + " of " + imgs.length;
+      counter.textContent = (i + 1) + " / " + imgs.length;
+      prev.disabled = i === 0;
+      next.disabled = i === imgs.length - 1;
+      preload(i + 1); preload(i - 1);
+    }
+    prev.addEventListener("click", function () { show(i - 1); });
+    next.addEventListener("click", function () { show(i + 1); });
+    wrap.setAttribute("tabindex", "0");
+    wrap.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { show(i - 1); e.preventDefault(); }
+      else if (e.key === "ArrowRight") { show(i + 1); e.preventDefault(); }
+    });
+    show(0);
+
+    wrap.appendChild(h("div", { "class": "pdf-gallery-nav" }, [prev, counter, next]));
+    return wrap;
+  }
+
   function buildPdfSection(node, fallbackTitle, opts) {
     var p = node || {};
-    if (p.enabled === false || !p.file) return null;
+    if (p.enabled === false) return null;
+    var imgs = (Array.isArray(p.images) ? p.images : (p.image ? [p.image] : [])).filter(Boolean);
+    if (!imgs.length && !p.file) return null;
     var title = p.title || fallbackTitle;
     var col = h("div", { "class": "column is-four-fifths has-text-centered" });
     if (p.separator !== false) col.appendChild(h("hr"));
     col.appendChild(h("h2", { "class": "title is-3", html: title }));
-    var pdf = h("div", { "class": "publication-pdf", style: "padding-bottom:" + aspectPadding(p.aspect) });
-    pdf.appendChild(h("iframe", { src: p.file, title: title, frameborder: "0", loading: "lazy" }));
-    col.appendChild(pdf);
-    var caption = p.caption != null ? p.caption
-      : 'If the ' + String(title).toLowerCase() + ' does not display, ' +
-        '<a href="' + p.file + '" target="_blank" rel="noopener">open it directly</a>.';
+
+    if (imgs.length) {
+      col.appendChild(buildGallery(p, title, imgs));
+    } else {
+      var pdf = h("div", { "class": "publication-pdf", style: "padding-bottom:" + aspectPadding(p.aspect) });
+      pdf.appendChild(h("iframe", { src: p.file, title: title, frameborder: "0", loading: "lazy" }));
+      col.appendChild(pdf);
+    }
+
+    var caption = p.caption;
+    if (caption == null && p.file) {
+      caption = imgs.length
+        ? '<a href="' + p.file + '" target="_blank" rel="noopener">Open the full PDF</a>.'
+        : 'If the ' + String(title).toLowerCase() + ' does not display, ' +
+          '<a href="' + p.file + '" target="_blank" rel="noopener">open it directly</a>.';
+    }
     if (caption) col.appendChild(h("p", { "class": "fig-caption has-text-centered", html: caption }));
     return sectionWrap(col, opts || {});
   }

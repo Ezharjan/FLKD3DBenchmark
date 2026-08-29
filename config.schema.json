@@ -51,7 +51,7 @@
     },
     "links": {
       "type": "array",
-      "description": "Hero buttons, rendered left to right in this order. Common types: paper, arxiv, code, dataset, poster, appendix, video, project, slides. Set enabled:false to hide without deleting.",
+      "description": "Hero buttons, rendered left to right in this order. Common types: paper, arxiv, code, dataset, poster, appendix, video, project, slides, eccv. Set enabled:false to hide without deleting.",
       "items": {
         "type": "object",
         "required": ["label", "url"],
@@ -91,6 +91,12 @@
         "title": { "type": "string", "default": "Slides" },
         "file": { "type": "string", "description": "PDF in the project root, e.g. 'presentation_slides.pdf'. Must not be password-protected for inline display." },
         "aspect": { "type": ["string", "number"], "default": "16:9", "description": "Shape of the embed box, matched to the PDF page: '16:9', '1.237:1', a bare '56.25%', or a width/height number." },
+        "image": { "type": "string", "description": "Single page image, e.g. 'static/images/paper_poster.jpg'. Shown instead of the PDF embed; it links to `file`." },
+        "images": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Page images in order, e.g. 'static/images/slides/slide-01.jpg'. Rendered as a viewer with previous/next controls. Prefer these over the PDF embed: many browsers, most mobile ones, show nothing for an inline PDF."
+        },
         "caption": { "type": "string", "description": "Line under the embed (inline HTML allowed). Omit for the default 'open it directly' note." },
         "separator": { "type": "boolean", "default": true, "description": "Draw a horizontal rule above the section." }
       }
@@ -104,6 +110,12 @@
         "title": { "type": "string", "default": "Poster" },
         "file": { "type": "string", "description": "PDF in the project root, e.g. 'paper_poster.pdf'. Must not be password-protected for inline display." },
         "aspect": { "type": ["string", "number"], "default": "16:9", "description": "Shape of the embed box, matched to the PDF page: '16:9', '1.237:1', a bare '56.25%', or a width/height number." },
+        "image": { "type": "string", "description": "Single page image, e.g. 'static/images/paper_poster.jpg'. Shown instead of the PDF embed; it links to `file`." },
+        "images": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Page images in order, e.g. 'static/images/slides/slide-01.jpg'. Rendered as a viewer with previous/next controls. Prefer these over the PDF embed: many browsers, most mobile ones, show nothing for an inline PDF."
+        },
         "caption": { "type": "string", "description": "Line under the embed (inline HTML allowed). Omit for the default 'open it directly' note." },
         "separator": { "type": "boolean", "default": true, "description": "Draw a horizontal rule above the section." }
       }

@@ -373,6 +373,42 @@ body {
   .publication-pdf { min-height: 320px; }
 }
 
+/* Page-image viewer for the slides and the poster (see render.js:buildGallery).
+   Rendering the pages as images keeps them visible in every browser, including
+   the mobile ones that show nothing for an inline PDF. */
+.pdf-gallery { outline: none; }
+.pdf-gallery-frame {
+  position: relative; width: 100%; height: 0; overflow: hidden;
+  border: 1px solid #e3e7ec; border-radius: 10px; background: #f7f8fa;
+}
+.pdf-gallery-frame > img,
+.pdf-gallery-frame > a { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.pdf-gallery-frame img {
+  width: 100%; height: 100%; object-fit: contain; display: block; user-select: none;
+}
+/* The `#app img` figure spacing above would push the page image down and clip it
+   inside the frame; this selector outranks it (id + class beats id alone). */
+#app .pdf-gallery-frame img { margin: 0 !important; }
+.pdf-gallery-frame > a:hover { opacity: 0.93; }
+.pdf-gallery:focus-visible .pdf-gallery-frame { box-shadow: 0 0 0 3px rgba(54, 54, 54, 0.22); }
+
+.pdf-gallery-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.9rem; margin-top: 0.95rem;
+}
+.pdf-gallery-nav button {
+  width: 2.35rem; height: 2.35rem; padding: 0; border: 0; border-radius: 50%;
+  background: #363636; color: #fff; font-size: 1.15rem; line-height: 1; cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+.pdf-gallery-nav button:hover:not(:disabled) { background: #4a4a4a; }
+.pdf-gallery-nav button:disabled { opacity: 0.3; cursor: default; }
+.pdf-gallery-counter {
+  min-width: 3.6rem; color: #4a5568; font-size: 0.92rem;
+  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+}
+.pdf-gallery + .fig-caption { margin-top: 0.9rem; margin-bottom: 0; }
+
 /* ================================================================
    Spacing refinements — airy hero + clearer section separation
    ================================================================ */
